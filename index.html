@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Vahvuusmatka" startnode="28" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="e0112be7-c150-4f68-891a-02695533f7aa" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">:root {
+	<tw-storydata name="Vahvuusmatka" startnode="18" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="e0112be7-c150-4f68-891a-02695533f7aa" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">:root {
   --bg-body:#F4FAF8;
   --text-main:#132A2E;
 
@@ -170,11 +170,15 @@ body {
 
 /* ===== PASSAGE-ALUE ===== */
 
-#passages,#passages .passage{
+#passages{
   display:flex;
-  flex-direction:column;
-  align-items:center;
+  justify-content:center;
 }
+
+#passages .passage{
+  display:block;
+}
+
 
 #passages{
   max-width:860px;
@@ -189,6 +193,7 @@ body {
   line-height:1.65;
 }
 
+
 /* ===== TYPOGRAFIA ===== */
 
 #passages .passage h1,
@@ -196,7 +201,7 @@ body {
 #passages .passage h3,
 #passages .passage p{
   text-align:center;
-  margin-bottom:.6rem;
+  margin-bottom:.2rem;
 }
 
 #passages .passage h1{
@@ -462,6 +467,193 @@ body {
   letter-spacing: .12em;
   opacity: .6;
 }
+
+/* ===== VAHVUUSKORTTI – OMA TEKSTIMALLI ===== */
+
+.school-card .vk-text {
+  display: block;
+  margin: 0.15rem 0 !important;
+  line-height: 1.35 !important;
+  text-align: center;
+}
+
+/* Nollaa SugarCuben pakottama p-marginaali Vahvuuskortissa */
+.school-card p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* MiniTest on vain vihje – ei otsikko */
+
+.minitesti-hint {
+  font-size: 2rem;
+  opacity: 0.75;
+  margin: 0.25rem 0 0.4rem 0;
+  text-align: center;
+}
+
+.minitesti-tyyppi {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.left-list {
+  text-align: left !important;
+  margin: 0.4rem auto !important;
+  padding-left: 1.2rem !important;
+}
+/* VIHREÄ TALLENNUSNAPPI */
+
+#passages .answer-group a.link-internal {
+  background: linear-gradient(180deg,#7EDC9A,#4CAF79) !important;
+  color:#103820 !important;
+  border:2px solid #4F8A62 !important;
+  box-shadow:0 4px 0 rgba(0,0,0,.28) !important;
+}
+/* Vahvuuslähteet – tasavertaiset kortit */
+
+.vahvuus-lahteet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0 0.7rem;
+}
+
+.lahde-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 0.7rem 0.9rem;
+  width: min(320px, 100%);
+  text-align: center;
+}
+
+.lahde-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-bottom: 0.2rem;
+}
+/* Leveät, tasaiset vahvuuslähdekortit */
+
+.school-card .vahvuus-lahteet{
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+}
+
+.school-card .vahvuus-lahteet .lahde-card{
+  width: 48% !important;        /* KAKSI LEVEÄÄ KORTTIA */
+  min-width: 280px !important;  /* ei pylväiksi */
+  max-width: 420px !important;  /* pysyy kauniina */
+  min-height: 120px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  background: #ffffff !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 14px !important;
+  padding: 0.9rem 1.1rem !important;
+  box-sizing: border-box !important;
+}
+
+/* mobiilissa allekkain */
+@media (max-width:700px){
+  .school-card .vahvuus-lahteet{
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .school-card .vahvuus-lahteet .lahde-card{
+    width: 100% !important;
+    max-width: 520px !important;
+  }
+}
+/* MINI TESTI RAW LAYOUT – EI KESKITYSTÄ */
+
+body.minitesti-raw #story,
+body.minitesti-raw #passages,
+body.minitesti-raw #passages .passage {
+  display: block !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+}
+
+body.minitesti-raw #passages .passage {
+  padding-top: 0.2rem !important;
+}
+/* MiniTestin tulossivu aivan ylös */
+
+body.minitesti-raw #passages {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+body.minitesti-raw #passages .passage {
+  margin-top: 0 !important;
+  padding-top: 0.15rem !important;
+}
+/* Kaikki vahvuudet – rauhallinen lista */
+
+.kaikki-vahvuudet {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.35rem 0.7rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0 0.2rem 0;
+}
+
+.kaikki-vahvuudet li {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.9rem;
+}
+/* Vahvuusvalinnat: ennen ja jälkeen klikin */
+
+.vahvuus-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid #9ED4C7;
+  background: #E6F4EF;
+  color: #0F3D36;
+  text-decoration: none !important;
+  box-shadow: 0 3px 0 rgba(0,0,0,.18);
+  margin: .25rem .25rem;
+}
+
+.vahvuus-chip.valittu {
+  background: #2F8F7A;
+  color: #ffffff;
+  border-color: #1F6F78;
+}
+.vahvuus-ryhma{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.4rem;
+  margin:.35rem 0 .8rem;
+}
+
+.vahvuus-pill{
+  background:#E6F3EF;
+  color:#134B45;
+  border-radius:999px;
+  padding:.3rem .7rem;
+  font-size:.85rem;
+}
+
+.vahvuus-pill.hiljainen{
+  opacity:.45;
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ========= NAVBAR ========= */
 $(document).on(":passagestart", function (event) {
   if (!event || !event.passage) return;
@@ -587,43 +779,51 @@ State.variables.pisteet = 0;
 Engine.play(&quot;start&quot;);
 &lt;&lt;/script&gt;&gt;
 
-
 &lt;&lt;set $vahvuudet to []&gt;&gt;
 &lt;&lt;set $laskuri to {}&gt;&gt;
-
-&lt;&lt;script&gt;&gt;
-window.lisaa = function(v){
- if(!$laskuri[v]){$laskuri[v]=0;}
- $laskuri[v]++;
- if(!$vahvuudet.includes(v)){$vahvuudet.push(v);}
-}
-&lt;&lt;/script&gt;&gt;
-
-:: StoryInit
-&lt;&lt;set $vahvuudet to []&gt;&gt;
-&lt;&lt;set $laskuri to {}&gt;&gt;
+&lt;&lt;set $lahteet to {}&gt;&gt;
 &lt;&lt;set $tyypit to { Tekija:0, Ajattelija:0, Auttaja:0, Luova:0, Oppija:0 }&gt;&gt;
 
 &lt;&lt;script&gt;&gt;
 window.lisaa = function(v){
-  if (State.variables.laskuri[v] == null) {
-    State.variables.laskuri[v] = 0;
-  }
-  State.variables.laskuri[v]++;
+  const vars = SugarCube.State.variables;
 
-  if (!State.variables.vahvuudet.includes(v)) {
-    State.variables.vahvuudet.push(v);
+  if (!vars.laskuri) vars.laskuri = {};
+  if (!vars.vahvuudet) vars.vahvuudet = [];
+
+  if (vars.laskuri[v] == null) vars.laskuri[v] = 0;
+  vars.laskuri[v]++;
+
+  if (!vars.vahvuudet.includes(v)) {
+    vars.vahvuudet.push(v);
+  }
+};
+
+window.lisaaLahteesta = function(lahde, vahvuus){
+  const vars = SugarCube.State.variables;
+
+  if (!vars.lahteet) vars.lahteet = {};
+  if (!vars.lahteet[lahde]) vars.lahteet[lahde] = [];
+
+  if (!vars.laskuri) vars.laskuri = {};
+  if (vars.laskuri[vahvuus] == null) vars.laskuri[vahvuus] = 0;
+  vars.laskuri[vahvuus]++;
+
+  if (!vars.lahteet[lahde].includes(vahvuus)) {
+    vars.lahteet[lahde].push(vahvuus);
   }
 };
 
 window.lisaaTyyppi = function(t){
-  if (State.variables.tyypit[t] == null) {
-    State.variables.tyypit[t] = 0;
+  const vars = SugarCube.State.variables;
+
+  if (!vars.tyypit) {
+    vars.tyypit = { Tekija:0, Ajattelija:0, Auttaja:0, Luova:0, Oppija:0 };
   }
-  State.variables.tyypit[t]++;
+  if (vars.tyypit[t] == null) vars.tyypit[t] = 0;
+  vars.tyypit[t]++;
 };
 &lt;&lt;/script&gt;&gt;
-
 </tw-passagedata><tw-passagedata pid="2" name="Mini2" tags="" position="400,450" size="100,100">
 
 &lt;h3&gt;2. Kun joku pyytää sinulta apua, sinä yleensä…&lt;/h3&gt;
@@ -648,7 +848,7 @@ window.lisaaTyyppi = function(t){
 &lt;&lt;/link&gt;&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="3" name="start" tags="" position="575,50" size="100,100">&lt;&lt;run document.body.classList.remove(&quot;hide-navbar&quot;)&gt;&gt;
+</tw-passagedata><tw-passagedata pid="3" name="start" tags="" position="575,0" size="100,100">
 
 &lt;h1&gt;VAHVUUSPOLKU&lt;/h1&gt;
 
@@ -663,7 +863,7 @@ window.lisaaTyyppi = function(t){
 &lt;/div&gt;
 
 &lt;div class=&quot;answer-group&quot;&gt;
-  [[Aloita-&gt;Tietokortti1]]
+  [[Aloita-&gt;Tieto1]]
 &lt;/div&gt;
 
 </tw-passagedata><tw-passagedata pid="4" name="MiniTesti" tags="" position="400,325" size="100,100">&lt;h2&gt;Pikavahvuustesti&lt;/h2&gt;
@@ -764,37 +964,25 @@ Vastaa nopeasti. Ensimmäinen ajatus on usein paras.
 &lt;&lt;/link&gt;&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="8" name="MiniTulokset" tags="" position="400,950" size="100,100">&lt;&lt;if $laskuri is undefined&gt;&gt;&lt;&lt;set $laskuri to {}&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $tyypit is undefined&gt;&gt;&lt;&lt;set $tyypit to { Tekija:0, Ajattelija:0, Auttaja:0, Luova:0, Oppija:0 } &gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;set _paras to &quot;Tekija&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="8" name="MiniTulokset" tags="" position="400,950" size="100,100">&lt;&lt;run document.body.classList.add(&quot;minitesti-raw&quot;)&gt;&gt;
+&lt;&lt;if $tyypit is undefined&gt;&gt;
+  &lt;&lt;set $tyypit to { Tekija:0, Ajattelija:0, Auttaja:0, Luova:0, Oppija:0 }&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;set $minitestiTyyppi to &quot;Tekija&quot;&gt;&gt;
 &lt;&lt;for _t, _n range $tyypit&gt;&gt;
-  &lt;&lt;if _n &gt; $tyypit[_paras]&gt;&gt;
-    &lt;&lt;set _paras to _t&gt;&gt;
+  &lt;&lt;if _n &gt; $tyypit[$minitestiTyyppi]&gt;&gt;
+    &lt;&lt;set $minitestiTyyppi to _t&gt;&gt;
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
-&lt;h3&gt;Vahvuustyyppisi on: &lt;span class=&quot;highlight&quot;&gt;_paras&lt;/span&gt;&lt;/h3&gt;
-&lt;&lt;if _paras is &quot;Tekija&quot;&gt;&gt;
-&lt;p&gt;Olet tekijä. Saat asiat liikkeelle ja viet ne maaliin.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _paras is &quot;Ajattelija&quot;&gt;&gt;
-&lt;p&gt;Olet ajattelija. Suunnittelet, harkitset ja löydät järkevät ratkaisut.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _paras is &quot;Auttaja&quot;&gt;&gt;
-&lt;p&gt;Olet auttaja. Huomaat muut ja teet hyvää ympärillesi.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _paras is &quot;Luova&quot;&gt;&gt;
-&lt;p&gt;Olet luova. Keksit uusia ideoita ja rohkeita ratkaisuja.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _paras is &quot;Oppija&quot;&gt;&gt;
-&lt;p&gt;Olet oppija. Omaksut uutta nopeasti ja haluat kehittyä.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;h3&gt;MiniTestin tulos&lt;/h3&gt;
 &lt;p&gt;
-Nämä ovat vihjeitä siitä, missä olet todennäköisesti hyvä. Vahvuuspolku auttaa sinua tunnistamaan lisää.
+Tämän minitestin perusteella saatat olla 
+&lt;b&gt;$minitestiTyyppi&lt;/b&gt;-tyyppiä.
 &lt;/p&gt;
 &lt;div class=&quot;intro-nappi&quot;&gt;
-[[Jatka vahvuuspolulle-&gt;Vahvuuskortti]]
+  [[Tallenna tulos ja jatka-&gt;Tieto1A]]
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="9" name="Ammattitehtävä" tags="" position="675,325" size="100,100">&lt;h1&gt;Valitse ammatti&lt;/h1&gt;
+</tw-passagedata><tw-passagedata pid="9" name="Ammattitehtävä" tags="" position="950,225" size="100,100">&lt;h1&gt;Valitse ammatti&lt;/h1&gt;
 &lt;div class=&quot;info-text&quot;&gt;
   &lt;p&gt;&lt;strong&gt;Tutustu ensin Luontoalan koulutuksiin ennen kuin aloitat oman ammattitehtäväsi.&lt;/strong&gt;&lt;/p&gt;
   &lt;div class=&quot;intro-nappi&quot;&gt;[[Tutustu SOTE-alan koulutuksiin-&gt;Oppilaitokset]]&lt;/div&gt;
@@ -822,7 +1010,7 @@ Nämä ovat vihjeitä siitä, missä olet todennäköisesti hyvä. Vahvuuspolku 
 &lt;&lt;link &quot;Ympäristötarkastaja&quot;&gt;&gt;&lt;&lt;set $ammatti=&quot;Ympäristötarkastaja&quot;&gt;&gt;&lt;&lt;goto &quot;Esitelmäpohja&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link &quot;Jätehuollon työntekijä&quot;&gt;&gt;&lt;&lt;set $ammatti=&quot;Jätehuollon työntekijä&quot;&gt;&gt;&lt;&lt;goto &quot;Esitelmäpohja&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="10" name="Loppu" tags="" position="675,575" size="100,100">
+</tw-passagedata><tw-passagedata pid="10" name="Loppu" tags="" position="950,450" size="100,100">
 &lt;h2&gt;Hyvä homma!&lt;/h2&gt;
 
 &lt;p&gt;
@@ -844,58 +1032,7 @@ Olet pohtinut omaa kiinnostustasi palvelualan ammatteihin. Voit näyttää vasta
   &lt;/div&gt;
 &lt;/div&gt;
 
-</tw-passagedata><tw-passagedata pid="11" name="Oppilaitokset" tags="" position="825,200" size="100,100">&lt;h2&gt;Luonto-, ympäristö- ja metsäalan koulutukset&lt;/h2&gt;
-
-&lt;p&gt;
-Luonto-, ympäristö- ja metsäalan ammatteihin voi opiskella monissa oppilaitoksissa. Tällä sivulla listatut koulutukset ja oppilaitokset ovat esimerkkejä. Koulutustarjonta ja hakukohteet voivat muuttua. Varmista ajantasaiset tiedot aina omalta opinto-ohjaajaltasi sekä oppilaitosten omilta verkkosivuilta.
-&lt;/p&gt;
-
-&lt;div class=&quot;school-card&quot;&gt;
-&lt;h3&gt;Stadin ammattioppilaitos&lt;/h3&gt;
-&lt;p&gt;Luonto- ja ympäristöalan perustutkintoja.&lt;/p&gt;
-&lt;a href=&quot;https://www.stadinAO.fi&quot; target=&quot;_blank&quot;&gt;Lue lisää&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;school-card&quot;&gt;
-&lt;h3&gt;Keuda ammattiopisto&lt;/h3&gt;
-&lt;p&gt;Luonto- ja ympäristöalan sekä metsäalan koulutuksia.&lt;/p&gt;
-&lt;a href=&quot;https://www.keuda.fi&quot; target=&quot;_blank&quot;&gt;Lue lisää&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;school-card&quot;&gt;
-&lt;h3&gt;Hyria ammattiopisto&lt;/h3&gt;
-&lt;p&gt;Luonto-, ympäristö- ja metsäalan perustutkintoja.&lt;/p&gt;
-&lt;a href=&quot;https://www.hyria.fi&quot; target=&quot;_blank&quot;&gt;Lue lisää&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;school-card&quot;&gt;
-&lt;h3&gt;Omnia ammattiopisto&lt;/h3&gt;
-&lt;p&gt;Ympäristöalan ja kestävän kehityksen koulutuksia.&lt;/p&gt;
-&lt;a href=&quot;https://www.omnia.fi&quot; target=&quot;_blank&quot;&gt;Lue lisää&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;school-card&quot;&gt;
-&lt;h3&gt;Lapin koulutuskeskus REDU&lt;/h3&gt;
-&lt;p&gt;Metsä- ja luontoalan koulutuksia, porotalousalan koulutuksia.&lt;/p&gt;
-&lt;a href=&quot;https://www.redu.fi&quot; target=&quot;_blank&quot;&gt;Lue lisää&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;school-card&quot;&gt;
-&lt;h3&gt;Hämeen ammattikorkeakoulu (HAMK)&lt;/h3&gt;
-&lt;p&gt;Metsä-, ympäristö- ja luonnonvara-alan korkeakoulutuksia.&lt;/p&gt;
-&lt;a href=&quot;https://www.hamk.fi&quot; target=&quot;_blank&quot;&gt;Lue lisää&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;intro-nappi&quot;&gt;
-  [[Palaa alkuun-&gt;start]]
-  
-&lt;a class=&quot;macro-link btn--danger&quot; href=&quot;javascript:void(0)&quot;
-   onclick=&quot;SugarCube.Engine.play(&#39;Kansi&#39;)&quot;&gt;
-   Poistu
-&lt;/a&gt;
-
-&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="12" name="Esitelmäpohja" tags="" position="675,450" size="100,100">&lt;&lt;script&gt;&gt;
+</tw-passagedata><tw-passagedata pid="11" name="Esitelmäpohja" tags="" position="950,325" size="100,100">&lt;&lt;script&gt;&gt;
 setTimeout(initAmmattiAutosave, 100);
 &lt;&lt;/script&gt;&gt;
 &lt;h2&gt;Esitelmä ammatista: &lt;&lt;print $ammatti&gt;&gt;&lt;/h2&gt;
@@ -940,196 +1077,218 @@ Lopuksi saat vastauksistasi yhteenvedon, jonka voit ladata tiedostona ja kopioid
 &lt;&lt;/link&gt;&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="13" name="Innostus" tags="" position="125,200" size="100,100">
-Millaiset tekemiset innostavat sinua juuri nyt?
-
-[[Liikkuminen-&gt;InnostusV]]
-[[Pelaaminen-&gt;InnostusV]]
-[[Piirtäminen-&gt;InnostusV]]
-[[Auttaminen-&gt;InnostusV]]
-[[Esiintyminen-&gt;InnostusV]]
-</tw-passagedata><tw-passagedata pid="14" name="InnostusV" tags="" position="125,325" size="100,100">
-Mitä vahvuuksia tarvitset näissä tekemisissä?
-
-&lt;&lt;link &quot;Luova&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Luova&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Energininen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Energininen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Rohkea&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Rohkea&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Utelias&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Utelias&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Ryhmätyötaitoinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Ryhmätyötaitoinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;br&gt;&lt;br&gt;
-[[Seuraava-&gt;Lapsuus]]
-</tw-passagedata><tw-passagedata pid="15" name="Lapsuus" tags="" position="125,450" size="100,100">
-Millaisista asioista innostuit lapsena?
-
-Mitä vahvuuksia tunnistat itsessäsi jo lapsena?
-
-&lt;&lt;link &quot;Leikkisä&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Leikkisä&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Idearikas&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Idearikas&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Iloinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Iloinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Luova&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Luova&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Utelias&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Utelias&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;br&gt;&lt;br&gt;
-[[Seuraava-&gt;Flow]]
-</tw-passagedata><tw-passagedata pid="16" name="Flow" tags="" position="125,575" size="100,100">
-Minkä tekemiseen voit uppoutua niin, että aika unohtuu?
-
-Mitkä vahvuutesi ovat silloin mukana?
-
-&lt;&lt;link &quot;Sinnikäs&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Sinnikäs&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Huolellinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Huolellinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Oppimistaidollinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Oppimistaidollinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Tarkka&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Tarkka&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Ajattelutaitoinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Ajattelutaitoinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;br&gt;&lt;br&gt;
-[[Seuraava-&gt;Parhaimmillasi]]
-</tw-passagedata><tw-passagedata pid="17" name="Parhaimmillasi" tags="" position="125,700" size="100,100">
-Missä tilanteissa olet parhaimmillasi?
-
-&lt;&lt;link &quot;Ystävällinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Ystävällinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Luotettava&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Luotettava&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Ryhmätyötaitoinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Ryhmätyötaitoinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Reilu&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Reilu&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Vastuullinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Vastuullinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;br&gt;&lt;br&gt;
-[[Seuraava-&gt;Selviytyminen]]
-</tw-passagedata><tw-passagedata pid="18" name="Selviytyminen" tags="" position="125,825" size="100,100">
-Miten olet selvinnyt vaikeista tilanteista?
-
-&lt;&lt;link &quot;Rohkea&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Rohkea&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Sinnikäs&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Sinnikäs&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Toiveikas&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Toiveikas&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Joustava&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Joustava&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Rauhallinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Rauhallinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;br&gt;&lt;br&gt;
-[[Seuraava-&gt;Oppiminen]]
-</tw-passagedata><tw-passagedata pid="19" name="Oppiminen" tags="" position="125,950" size="100,100">
-Mitä opit nopeasti?
-
-&lt;&lt;link &quot;Oppimistaidollinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Oppimistaidollinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Oivaltava&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Oivaltava&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Älykäs&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Älykäs&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Käytännöllinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Käytännöllinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Utelias&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Utelias&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;br&gt;&lt;br&gt;
-[[Seuraava-&gt;Tulevaisuus]]
-</tw-passagedata><tw-passagedata pid="20" name="Tulevaisuus" tags="" position="125,1075" size="100,100">
-Mihin olet motivoitunut nyt ja tulevaisuudessa?
-
-&lt;&lt;link &quot;Tavoitteellinen&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Tavoitteellinen&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Rohkea&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Rohkea&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Idearikas&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Idearikas&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Sitoutunut&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Sitoutunut&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link &quot;Toiveikas&quot;&gt;&gt;&lt;&lt;run lisaa(&quot;Toiveikas&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;br&gt;&lt;br&gt;
-[[Katso tulokset-&gt;Yhteenveto]]
-</tw-passagedata><tw-passagedata pid="21" name="Yhteenveto" tags="" position="125,1200" size="100,100">
-&lt;h3&gt;Sinun vahvuutesi&lt;/h3&gt;
-
-&lt;&lt;for _v, _n range $laskuri&gt;&gt;
-• &#39;&#39;_v&#39;&#39; (valittu _n kertaa)&lt;br&gt;
-&lt;&lt;/for&gt;&gt;
-
-&lt;br&gt;
-&lt;h4&gt;Mitä tämä kertoo sinusta?&lt;/h4&gt;
-
-Sinä olet ihminen, joka käyttää vahvuuksiaan monipuolisesti.
-Nämä vahvuudet auttavat sinua koulussa, harrastuksissa ja tulevaisuuden valinnoissa.
-
-&lt;br&gt;&lt;br&gt;
-[[Aloita alusta-&gt;Start]]
-</tw-passagedata><tw-passagedata pid="22" name="Start" tags="" position="125,1325" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Tietokortti1" tags="" position="400,200" size="100,100">&lt;h1&gt;Mikä on vahvuus?&lt;/h1&gt;
-
-&lt;div class=&quot;content-box&quot;&gt;
-  Vahvuus on asia, joka on sinulle &lt;b&gt;helppoa&lt;/b&gt;.
-  Usein se tuntuu niin tavalliselta, ettet edes huomaa sitä.
-  &lt;br&gt;
-  Se mistä pidät, ei aina ole vahvuutesi.
-  Se mitä teet vastahakoisesti ja huonosti, ei myöskään ole vahvuutesi.
-  &lt;br&gt;&lt;br&gt;
-  Jos joku asia on sinulle helppoa ja muille vaikeaa,
-  se on tärkeä vihje omasta vahvuudestasi.
-&lt;/div&gt;
-
+</tw-passagedata><tw-passagedata pid="12" name="Innostus" tags="" position="125,200" size="100,100">&lt;h2&gt;Mikä saa sinut innostumaan?&lt;/h2&gt;
 &lt;div class=&quot;task-box&quot;&gt;
-  &lt;b&gt;Miten löydät omat vahvuutesi?&lt;/b&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Katso missä onnistut usein&lt;/li&gt;
-    &lt;li&gt;Kysy muilta, missä he näkevät sinun olevan hyvä&lt;/li&gt;
-    &lt;li&gt;Pyydä kavereita kertomaan hetki, jolloin olit parhaimmillasi&lt;/li&gt;
-    &lt;li&gt;Tarkkaile, mistä innostut ja mitä teet omalla tavallasi&lt;/li&gt;
-  &lt;/ul&gt;
+Mieti tekemistä, josta pidät ja joka tuntuu sinusta mukavalta.
+Vastaa näihin:
+&lt;br&gt;&lt;br&gt;
+• Mitä teet silloin?  
+• Mikä siinä on sinusta kivaa?  
+• Missä olet siinä mielestäsi hyvä?
+&lt;/div&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+Valitse 2–5 vahvuutta, jotka sopivat tähän tekemiseen.
+&lt;/div&gt;
+&lt;div class=&quot;answer-group vahvuus-valinta&quot;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Utelias&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;innostus&quot;,&quot;Utelias&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Utelias ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Luova&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;innostus&quot;,&quot;Luova&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Luova ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Sinnikäs&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;innostus&quot;,&quot;Sinnikäs&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Sinnikäs ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;div class=&quot;answer-group vahvuus-valinta&quot;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Innostuva&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Innostuva&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Innostuva ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Energininen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Energininen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Energininen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Iloinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Iloinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Iloinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Idearikas&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Idearikas&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Idearikas ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Rohkea&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Rohkea&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Rohkea ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Päämäärätietoinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Päämäärätietoinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Päämäärätietoinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Ahkera&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Ahkera&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Ahkera ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Ryhmätyötaitoinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Ryhmätyötaitoinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Ryhmätyötaitoinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Ilmaisuvomainen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Ilmaisuvomainen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Ilmaisuvomainen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Optimistinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Optimistinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Optimistinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Toiveikas&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaa(&quot;Toiveikas&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Toiveikas ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
 &lt;/div&gt;
 
-&lt;div class=&quot;feedback-box&quot;&gt;
-  Kun tunnistat vahvuutesi ja käytät niitä,
-  oppiminen helpottuu ja itseluottamus kasvaa.
 &lt;/div&gt;
 
 &lt;div class=&quot;answer-group&quot;&gt;
-  [[Jatka-&gt;MiniTesti]]
+  [[Jatka-&gt;Selviytyminen]]
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="24" name="Vahvuuskortti" tags="" position="275,1075" size="100,100">
+
+</tw-passagedata><tw-passagedata pid="13" name="Tieto1" tags="" position="575,125" size="100,100">&lt;h1&gt;Mikä on vahvuus?&lt;/h1&gt;
+
+&lt;div class=&quot;content-box&quot;&gt;
+Vahvuus on asia, joka on sinulle &lt;b&gt;helppoa&lt;/b&gt;.
+Usein se tuntuu niin tavalliselta, ettet edes huomaa sitä.&lt;br&gt;
+Se mistä pidät, ei aina ole vahvuutesi.
+Se mitä teet vastahakoisesti ja huonosti, ei myöskään ole vahvuutesi.&lt;br&gt;&lt;br&gt;
+Jos joku asia on sinulle helppoa ja muille vaikeaa,
+se on tärkeä vihje omasta vahvuudestasi.
+&lt;/div&gt;
+
+&lt;div class=&quot;content-box&quot;&gt;
+Kun tunnistat vahvuutesi ja käytät niitä,
+oppiminen helpottuu ja itseluottamus kasvaa.
+&lt;/div&gt;
+
+&lt;div class=&quot;answer-group&quot;&gt;
+  [[Aloita heti!-&gt;MiniTesti]]
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="14" name="Vahvuuskortti" tags="" position="250,850" size="100,100">
+
+&lt;div class=&quot;school-card&quot; style=&quot;padding:1.05rem 1.15rem&quot;&gt;
 &lt;h1&gt;MINUN VAHVUUSKORTTINI&lt;/h1&gt;
 
-&lt;div class=&quot;school-card&quot;&gt;
-&lt;h3&gt;Tärkeimmät vahvuuteni&lt;/h3&gt;
-&lt;ul&gt;
-&lt;&lt;set _top to []&gt;&gt;
-&lt;&lt;for _v, _n range $laskuri&gt;&gt;
-  &lt;&lt;if _n &gt;= 2&gt;&gt;
-    &lt;&lt;set _top.push(_v)&gt;&gt;
-  &lt;&lt;/if&gt;&gt;
-&lt;&lt;/for&gt;&gt;
+&lt;hr&gt;
 
-&lt;&lt;if _top.length &gt; 0&gt;&gt;
-  &lt;&lt;for _v range _top&gt;&gt;
-    &lt;li&gt;&#39;&#39;_v&#39;&#39;&lt;/li&gt;
+&lt;b&gt;Minun vahvuuksieni lähteet&lt;/b&gt;
+
+&lt;div class=&quot;vahvuus-lahteet&quot;&gt;
+
+  &lt;&lt;if $omaVahvuusTallessa&gt;&gt;
+  &lt;div class=&quot;lahde-card&quot;&gt;
+    &lt;div class=&quot;lahde-title&quot;&gt;Oma havaintoni&lt;/div&gt;
+    &lt;div class=&quot;vk-text&quot;&gt;&quot;$omaVahvuus&quot;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $minitestiTyyppi&gt;&gt;
+&lt;div class=&quot;lahde-card&quot;&gt;
+  &lt;div class=&quot;lahde-title&quot;&gt;MiniTestin vihje&lt;/div&gt;
+  &lt;div class=&quot;vk-text&quot;&gt;
+    Olen
+    &lt;span class=&quot;minitesti-tyyppi&quot;&gt;$minitestiTyyppi&lt;/span&gt;-tyyppiä.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;/div&gt;
+
+&lt;hr style=&quot;margin:.4rem 0&quot;&gt;
+
+&lt;hr&gt;
+
+&lt;h3&gt;Kun olen innostunut&lt;/h3&gt;
+&lt;div class=&quot;vahvuus-ryhma&quot;&gt;
+&lt;&lt;if $lahteet.innostus&gt;&gt;
+  &lt;&lt;for _v range $lahteet.innostus&gt;&gt;
+    &lt;span class=&quot;vahvuus-pill&quot;&gt;_v&lt;/span&gt;
   &lt;&lt;/for&gt;&gt;
 &lt;&lt;else&gt;&gt;
-  &lt;li&gt;Utelias&lt;/li&gt;
-  &lt;li&gt;Sinnikäs&lt;/li&gt;
-  &lt;li&gt;Luova&lt;/li&gt;
+  &lt;span class=&quot;vahvuus-pill hiljainen&quot;&gt;Ei vielä valintoja&lt;/span&gt;
 &lt;&lt;endif&gt;&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3&gt;Millainen tekijä olen?&lt;/h3&gt;
-
-&lt;&lt;if _top.includes(&quot;Ryhmätyötaitoinen&quot;)&gt;&gt;
-&lt;p&gt;Toimit hyvin ryhmässä ja huomioit muut.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _top.includes(&quot;Luova&quot;)&gt;&gt;
-&lt;p&gt;Keksit uusia ideoita ja ratkaisuja.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _top.includes(&quot;Sinnikäs&quot;)&gt;&gt;
-&lt;p&gt;Et luovuta helposti, vaikka tehtävä on vaikea.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _top.includes(&quot;Utelias&quot;)&gt;&gt;
-&lt;p&gt;Haluat oppia uutta ja kysyt rohkeasti.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if _top.includes(&quot;Oppimistaidollinen&quot;)&gt;&gt;
-&lt;p&gt;Opit asioita nopeasti ja löydät omat tapasi oppia.&lt;/p&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;hr&gt;
-&lt;h3&gt;Miten voin käyttää vahvuuksiani?&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Koulutehtävissä ja ryhmätöissä&lt;/li&gt;
-&lt;li&gt;Harrastuksissa&lt;/li&gt;
-&lt;li&gt;Uusien asioiden opettelussa&lt;/li&gt;
-&lt;li&gt;Tulevaisuuden valinnoissa&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/div&gt;
+
+&lt;h3&gt;Kun olen selvinnyt vaikeasta&lt;/h3&gt;
+&lt;div class=&quot;vahvuus-ryhma&quot;&gt;
+&lt;&lt;if $lahteet.selviytyminen&gt;&gt;
+  &lt;&lt;for _v range $lahteet.selviytyminen&gt;&gt;
+    &lt;span class=&quot;vahvuus-pill&quot;&gt;_v&lt;/span&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;span class=&quot;vahvuus-pill hiljainen&quot;&gt;Ei vielä valintoja&lt;/span&gt;
+&lt;&lt;endif&gt;&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Kun opin uutta&lt;/h3&gt;
+&lt;div class=&quot;vahvuus-ryhma&quot;&gt;
+&lt;&lt;if $lahteet.oppiminen&gt;&gt;
+  &lt;&lt;for _v range $lahteet.oppiminen&gt;&gt;
+    &lt;span class=&quot;vahvuus-pill&quot;&gt;_v&lt;/span&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;span class=&quot;vahvuus-pill hiljainen&quot;&gt;Ei vielä valintoja&lt;/span&gt;
+&lt;&lt;endif&gt;&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Tunteet ja kaveritaidot&lt;/h3&gt;
+&lt;div class=&quot;vahvuus-ryhma&quot;&gt;
+&lt;&lt;if $lahteet.tunteet&gt;&gt;
+  &lt;&lt;for _v range $lahteet.tunteet&gt;&gt;
+    &lt;span class=&quot;vahvuus-pill&quot;&gt;_v&lt;/span&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;span class=&quot;vahvuus-pill hiljainen&quot;&gt;Ei vielä valintoja&lt;/span&gt;
+&lt;&lt;endif&gt;&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Tulevaisuuden minä&lt;/h3&gt;
+&lt;div class=&quot;vahvuus-ryhma&quot;&gt;
+&lt;&lt;if $lahteet.tulevaisuus&gt;&gt;
+  &lt;&lt;for _v range $lahteet.tulevaisuus&gt;&gt;
+    &lt;span class=&quot;vahvuus-pill&quot;&gt;_v&lt;/span&gt;
+  &lt;&lt;/for&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;span class=&quot;vahvuus-pill hiljainen&quot;&gt;Ei vielä valintoja&lt;/span&gt;
+&lt;&lt;endif&gt;&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;feedback-box&quot;&gt;
+Tämä vahvuuskortti ei ole lopullinen totuus sinusta.  
+Se elää ja muuttuu, kun opit uutta ja huomaat lisää vahvuuksiasi.
+&lt;/div&gt;
+
 &lt;div class=&quot;intro-nappi&quot;&gt;
 [[Tulosta kortti-&gt;Tulosta]]
 [[Aloita alusta-&gt;start]]
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="25" name="Tulosta" tags="" position="275,1200" size="100,100">
+</tw-passagedata><tw-passagedata pid="15" name="Tulosta" tags="" position="250,975" size="100,100">
 &lt;h2&gt;Tulostettava vahvuuskortti&lt;/h2&gt;
 
 &lt;div class=&quot;school-card&quot;&gt;
@@ -1145,7 +1304,7 @@ Nämä vahvuudet auttavat sinua koulussa, harrastuksissa ja tulevaisuuden valinn
 &lt;div class=&quot;intro-nappi&quot;&gt;
 [[Takaisin-&gt;Vahvuuskortti]]
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="26" name="Tietokortti2" tags="" position="225,100" size="100,100">&lt;div class=&quot;info-text&quot;&gt;
+</tw-passagedata><tw-passagedata pid="16" name="Tieto2" tags="" position="275,100" size="100,100">&lt;div class=&quot;info-text&quot;&gt;
 
 &lt;h3&gt;Kaikki eivät ole hyviä kaikessa – eivät edes nerot&lt;/h3&gt;
 
@@ -1154,51 +1313,37 @@ Albert Einstein rakasti viulunsoittoa.
 Hän soitti usein, mutta hänen soittonsa oli monesti epävireistä ja kömpelöä.
 Silti hän muutti maailmaa ajattelullaan.
 &lt;/p&gt;
-
 &lt;p&gt;
 Charles Darwin oli huippuajattelija,
 mutta esiintyminen muiden edessä oli hänelle vaikeaa.
 &lt;/p&gt;
-
 &lt;p&gt;
 Isaac Newton keksi painovoimateorian,
 mutta ihmisten kanssa oleminen oli hänelle haastavaa.
 &lt;/p&gt;
-
 &lt;p&gt;
 Pablo Picasso maalasi kuuluisia tauluja,
 mutta laulaminen ei ollut hänen vahvuutensa.
 &lt;/p&gt;
-
 &lt;hr&gt;
-
 &lt;p&gt;
-He eivät olleet huonoja.
-He eivät vain olleet hyviä kaikessa.
+He eivät olleet huonoja. He eivät vain olleet hyviä kaikessa.
 &lt;/p&gt;
-
 &lt;p&gt;
 Ja silti he muuttivat maailmaa.
 &lt;/p&gt;
-
 &lt;h3&gt;Tärkeä viesti sinulle&lt;/h3&gt;
-
 &lt;p&gt;
-Sinun ei tarvitse olla paras kaikessa.
-Riittää, että löydät &lt;b&gt;oman juttusi&lt;/b&gt; ja uskallat harjoitella sitä.
+Sinun ei tarvitse olla paras kaikessa. Riittää, että löydät &lt;b&gt;oman juttusi&lt;/b&gt; ja uskallat harjoitella sitä.
 &lt;/p&gt;
-
 &lt;p&gt;
 Jokaisella on omat vahvuutensa – myös sinulla.
 &lt;/p&gt;
-
 &lt;/div&gt;
-
 &lt;div class=&quot;intro-nappi&quot;&gt;
 [[Jatka mini-testiin-&gt; Palautepysakki]]
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="27" name=" Palautepysakki" tags="" position="275,200" size="100,100">
-
+</tw-passagedata><tw-passagedata pid="17" name=" Palautepysakki" tags="" position="275,225" size="100,100">
 &lt;div class=&quot;info-text&quot;&gt;
 
 &lt;h3&gt;Pysähdy hetkeksi&lt;/h3&gt;
@@ -1230,7 +1375,7 @@ Kirjoita rauhassa. Tätä ei arvostella.
 &lt;div class=&quot;intro-nappi&quot;&gt;
 [[Jatka vahvuuspolulle-&gt;Innostus]]
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="28" name="Kansi" tags="" position="450,0" size="100,100">&lt;&lt;script&gt;&gt;
+</tw-passagedata><tw-passagedata pid="18" name="Kansi" tags="" position="450,0" size="100,100">&lt;&lt;script&gt;&gt;
 $(&#39;body&#39;).removeClass(&#39;hide-navbar&#39;);
 &lt;&lt;/script&gt;&gt;
 
@@ -1255,6 +1400,397 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 
   &lt;/div&gt;
 &lt;/a&gt;
+</tw-passagedata><tw-passagedata pid="19" name="Kirjauspysäkki" tags="" position="700,250" size="100,100">&lt;h2&gt;Kirjaa oma vahvuutesi&lt;/h2&gt;
+&lt;div class=&quot;content-box&quot;&gt;
+Pysähdy hetkeksi ja kirjoita yksi asia, jossa olet mielestäsi hyvä tai jossa olet onnistunut.
+Ei tarvitse olla täydellinen – tärkeintä on, että se on &lt;b&gt;sinun oma havaintosi&lt;/b&gt;.
+&lt;/div&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+&lt;label&gt;&lt;b&gt;Minun vahvuuteni on:&lt;/b&gt;&lt;/label&gt;
+&lt;&lt;textarea &quot;$omaVahvuus&quot; &quot;Kirjoita tähän yksi vahvuutesi...&quot;&gt;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;answer-group&quot;&gt;
+[[✨ Tallenna vahvuuskorttiin-&gt;Vahvuuskortti]]
+&lt;/div&gt;
+
+&lt;&lt;set $omaVahvuusTallessa to true&gt;&gt;
+
+
+
+
+</tw-passagedata><tw-passagedata pid="20" name="kirjauspysäkki_Tulevaisuus" tags="" position="675,525" size="100,100">&lt;h2&gt;Missä haluan olla hyvä?&lt;/h2&gt;
+
+&lt;div class=&quot;content-box&quot;&gt;
+Mieti hetki tulevaisuuttasi.  
+Onko jokin asia, jossa &lt;b&gt;haluaisit kehittyä tai tulla paremmaksi&lt;/b&gt;?
+Tämä voi liittyä kouluun, harrastuksiin tai omaan arkeen.
+&lt;/div&gt;
+
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+
+&lt;label&gt;&lt;b&gt;Haluan olla hyvä tässä:&lt;/b&gt;&lt;/label&gt;
+
+&lt;&lt;textarea &quot;$tulevaisuusVahvuus&quot; &quot;Kirjoita tähän asia, jossa haluat kehittyä...&quot;&gt;&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;answer-group&quot;&gt;
+&lt;&lt;button &quot;Tallenna ja jatka&quot;&gt;&gt;
+  &lt;&lt;set $tulevaisuusTallessa to true&gt;&gt;
+  &lt;&lt;goto &quot;Vahvuuskortti&quot;&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;feedback-box&quot;&gt;
+Myös tämä tallentuu omaan Vahvuuskorttiisi.
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="21" name="Tieto1A" tags="" position="575,250" size="100,100">&lt;&lt;run document.body.classList.remove(&quot;minitesti-raw&quot;)&gt;&gt;
+&lt;h1&gt;Miten löydät omat vahvuutesi?&lt;/h1&gt;
+
+&lt;div class=&quot;content-box&quot;&gt;
+Vahvuuksia ei aina huomaa heti, koska ne tuntuvat sinulle &lt;b&gt;helpoilta ja tavallisilta&lt;/b&gt;.
+Siksi niitä täytyy joskus pysähtyä etsimään.
+&lt;/div&gt;
+&lt;div class=&quot;vk-text&quot;&gt;
+&lt;h2&gt;Kirjaa oma oivallus heti!&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&quot;feedback-box&quot;&gt;
+Kun teet yhdenkin näistä, opit jo jotain tärkeää omista vahvuuksistasi.
+&lt;/div&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+&lt;b&gt;MiniTehtävä – tee yksi näistä:&lt;/b&gt;
+&lt;ul class=&quot;left-list&quot;&gt;
+  &lt;li&gt;Ajattele yhtä asiaa, jossa onnistut usein.&lt;/li&gt;
+  &lt;li&gt;Kysy yhdeltä ihmiseltä: &lt;i&gt;“Missä sinun mielestäsi olen hyvä?”&lt;/i&gt;&lt;/li&gt;
+  &lt;li&gt;Kysy kaverilta: &lt;i&gt;“Milloin olen ollut tosi hyvä jossakin?”&lt;/i&gt;&lt;/li&gt;
+  &lt;li&gt;Tarkkaile itseäsi: milloin innostut eniten ja toimit omalla tavallasi?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;answer-group&quot;&gt;
+  [[Kirjaa oma vahvuus-&gt;Kirjauspysäkki]]
+  
+&lt;/div&gt;
+
+
+</tw-passagedata><tw-passagedata pid="22" name="Selviytyminen" tags="" position="125,325" size="100,100">&lt;h2&gt;Miten selviät vaikeista tilanteista?&lt;/h2&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+Kaikilla on joskus vaikeita hetkiä.
+Mieti tilannetta, jossa:
+&lt;br&gt;
+• jokin tuntui vaikealta  
+• sinua jännitti tai harmitti  
+• mutta selvisit siitä silti
+&lt;/div&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+Valitse vahvuudet, joita käytit siinä tilanteessa.
+&lt;/div&gt;
+
+&lt;div class=&quot;answer-group vahvuus-valinta&quot;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Sinnikäs&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Sinnikäs&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Sinnikäs ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Rohkea&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Rohkea&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Rohkea ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Kärsivällinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Kärsivällinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Kärsivällinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Yritteliäs&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Yritteliäs&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Yritteliäs ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Optimistinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Optimistinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Optimistinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Rauhallinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Rauhallinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Rauhallinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Itseluottamuksellinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Itseluottamuksellinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Itseluottamuksellinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Toiveikas&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Toiveikas&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Toiveikas ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Vastuullinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Vastuullinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Vastuullinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Ratkaisuhakuinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Ratkaisuhakuinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Ratkaisuhakuinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Itsenäinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Itsenäinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Itsenäinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Avunpyytäjä&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;selviytyminen&quot;,&quot;Avunpyytäjä&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Avunpyytäjä ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;feedback-box&quot;&gt;
+Nämä vahvuudet auttavat sinua selviytymään myös tulevaisuudessa.
+&lt;/div&gt;
+
+&lt;div class=&quot;answer-group&quot;&gt;
+  [[Jatka-&gt;Oppiminen]]
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="23" name="Oppiminen" tags="" position="125,450" size="100,100">&lt;h2&gt;Missä opit helposti?&lt;/h2&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+Mieti asiaa, jonka opit nopeasti tai joka tuntuu sinusta helpolta.
+Se voi olla kouluaine, harrastus tai arjen taito.
+&lt;/div&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+Valitse vahvuudet, joita käytät silloin kun opit helposti.
+&lt;/div&gt;
+&lt;div class=&quot;answer-group vahvuus-valinta&quot;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Utelias&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Utelias&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Utelias ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Oppimishaluinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Oppimishaluinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Oppimishaluinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Nopea oppimaan&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Nopea oppimaan&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Nopea oppimaan ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Keskittyvä&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Keskittyvä&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Keskittyvä ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Muistava&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Muistava&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Muistava ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Tarkka&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Tarkka&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Tarkka ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Kyselijä&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Kyselijä&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Kyselijä ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Itsenäinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Itsenäinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Itsenäinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Sitkeä&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Sitkeä&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Sitkeä ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Järjestelmällinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Järjestelmällinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Järjestelmällinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Luova&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Luova&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Luova ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Ymmärtäväinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;oppiminen&quot;,&quot;Ymmärtäväinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Ymmärtäväinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;feedback-box&quot;&gt;
+Nämä vahvuudet kertovat, millainen oppija olet.
+&lt;/div&gt;
+&lt;div class=&quot;answer-group&quot;&gt;
+  [[Jatka-&gt;Tulevaisuus]]
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="24" name="Tulevaisuus" tags="" position="125,575" size="100,100">&lt;h2&gt;Mitä haluat tehdä tulevaisuudessa?&lt;/h2&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+Mieti asiaa, jota haluaisit oppia tai tehdä enemmän tulevaisuudessa.
+Se voi liittyä kouluun, harrastuksiin tai työhön.
+&lt;/div&gt;
+&lt;div class=&quot;task-box&quot;&gt;
+Valitse vahvuudet, jotka auttavat sinua näissä asioissa.
+&lt;/div&gt;
+&lt;div class=&quot;answer-group vahvuus-valinta&quot;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Päämäärätietoinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Päämäärätietoinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Päämäärätietoinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Motivoitunut&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Motivoitunut&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Motivoitunut ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Utelias&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Utelias&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Utelias ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Rohkea&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Rohkea&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Rohkea ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Sitkeä&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Sitkeä&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Sitkeä ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Itsenäinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Itsenäinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Itsenäinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Oppimishaluinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Oppimishaluinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Oppimishaluinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Yritteliäs&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Yritteliäs&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Yritteliäs ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Luova&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Luova&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Luova ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Toiveikas&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Toiveikas&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Toiveikas ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Vastuullinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Vastuullinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Vastuullinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Yhteistyökykyinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tulevaisuus&quot;,&quot;Yhteistyökykyinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Yhteistyökykyinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;feedback-box&quot;&gt;
+Nämä vahvuudet voivat auttaa sinua rakentamaan omaa polkuasi.
+&lt;/div&gt;
+&lt;div class=&quot;answer-group&quot;&gt;
+  [[Siirry vahvuuskortille-&gt;Vahvuuskortti]]
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="25" name="Kaveritaidot" tags="" position="125,700" size="100,100">&lt;h2&gt;Tunteet ja kaveritaidot&lt;/h2&gt;
+
+&lt;div class=&quot;task-box&quot;&gt;
+Mieti tilanteita, joissa olet muiden kanssa.
+
+Esimerkiksi kavereiden, luokan tai perheen kanssa.
+&lt;/div&gt;
+
+&lt;div class=&quot;task-box&quot;&gt;
+Valitse vahvuudet, joita käytät, kun toimit muiden ihmisten kanssa
+ja huolehdit omista tunteistasi.
+&lt;/div&gt;
+
+&lt;div class=&quot;answer-group vahvuus-valinta&quot;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Ystävällinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Ystävällinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Ystävällinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Empaattinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Empaattinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Empaattinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Kuunteleva&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Kuunteleva&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Kuunteleva ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Kannustava&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Kannustava&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Kannustava ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Rauhallinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Rauhallinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Rauhallinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Reilu&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Reilu&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Reilu ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Luotettava&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Luotettava&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Luotettava ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Sovittelija&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Sovittelija&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Sovittelija ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Avulias&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Avulias&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Avulias ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Yhteistyökykyinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Yhteistyökykyinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Yhteistyökykyinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Rohkea kertomaan tunteista&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Rohkea kertomaan tunteista&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Rohkea kertomaan tunteista ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkreplace &#39;&lt;span class=&quot;vahvuus-chip&quot;&gt;Itsesäätelykykyinen&lt;/span&gt;&#39;&gt;&gt;
+  &lt;&lt;run lisaaLahteesta(&quot;tunteet&quot;,&quot;Itsesäätelykykyinen&quot;)&gt;&gt;
+  &lt;span class=&quot;vahvuus-chip valittu&quot;&gt;Itsesäätelykykyinen ✓&lt;/span&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;answer-group&quot;&gt;
+  [[Jatka Vahvuuskortille-&gt;Vahvuuskortti]]
+&lt;/div&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
