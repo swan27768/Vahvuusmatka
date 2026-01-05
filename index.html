@@ -876,6 +876,103 @@ body.minitesti-raw #passages .passage {
   box-sizing: border-box !important;
 }
 
+.two-col {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.col-left {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.nerokortti {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.nerokortti img {
+  width: 100%;
+  display: block;
+}
+
+.nero-nimi {
+  padding: .45rem;
+  font-size: .85rem;
+  opacity: .8;
+}
+
+@media (max-width: 700px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===============================
+   TIETO2 – NEROGALLERIA
+   =============================== */
+.tiesitko-otsikko {
+  text-align: center;
+  color: var(--accent-1);
+  letter-spacing: 0.08em;
+  margin: 0 0 0.6rem 0;
+  font-size: 1.35rem;
+}
+
+.nero-grid {
+  max-width: 760px;
+  margin: 0 auto 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.nero-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  column-gap: 0.45rem;   /* teksti lähemmäs kuvaa */
+  row-gap: 0.2rem;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+
+  padding: 0.55rem 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.nero-row img {
+  width: 60px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.nero-row b {
+  color: var(--accent-1);
+}
+
+.oma-nero {
+  border: 2px dashed var(--accent-2);
+  background: rgba(255,255,255,0.9);
+}
+
+/* mobiili */
+@media (max-width: 600px) {
+  .nero-row {
+    grid-template-columns: 56px 1fr;
+    font-size: 0.88rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .nero-row img {
+    width: 56px;
+  }
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ========= NAVBAR ========= */
 $(document).on(":passagestart", function (event) {
   if (!event || !event.passage) return;
@@ -1556,51 +1653,61 @@ Muista painaa &lt;b&gt;“Tyhjennä ja poistu”&lt;/b&gt;, jos seuraava käytt�
 &lt;&lt;/link&gt;&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="13" name="Tieto2" tags="" position="275,100" size="100,100">&lt;div class=&quot;info-text&quot;&gt;
+</tw-passagedata><tw-passagedata pid="13" name="Tieto2" tags="" position="275,100" size="100,100">&lt;div class=&quot;nero-grid&quot;&gt;
+&lt;h2 class=&quot;tiesitko-otsikko&quot;&gt;Tiesitkö, että…&lt;/h2&gt;
 
-&lt;h3&gt;Kaikki eivät ole hyviä kaikessa – eivät edes nerot&lt;/h3&gt;
+  &lt;div class=&quot;nero-row&quot;&gt;
+    &lt;img src=&quot;https://raw.githubusercontent.com/swan27768/Vahvuusmatka/main/kuvat/Einshtein.png&quot;&gt;
+    &lt;div&gt;
+      &lt;b&gt;Albert Einstein&lt;/b&gt;&lt;br&gt;
+      Rakasti viulua – mutta ei ollut hyvä siinä.  
+      Silti hän muutti maailmaa ajattelullaan.
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-&lt;p&gt;
-Albert Einstein rakasti viulunsoittoa.
-Hän soitti usein, mutta hänen soittonsa oli monesti epävireistä ja kömpelöä.
-Silti hän muutti maailmaa ajattelullaan.
-&lt;/p&gt;
-&lt;p&gt;
-Charles Darwin oli huippuajattelija,
-mutta esiintyminen muiden edessä oli hänelle vaikeaa.
-&lt;/p&gt;
-&lt;p&gt;
-Isaac Newton keksi painovoimateorian,
-mutta ihmisten kanssa oleminen oli hänelle haastavaa.
-&lt;/p&gt;
-&lt;p&gt;
-Pablo Picasso maalasi kuuluisia tauluja,
-mutta laulaminen ei ollut hänen vahvuutensa.
-&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;
-He eivät olleet huonoja. He eivät vain olleet hyviä kaikessa.
-&lt;/p&gt;
-&lt;p&gt;
-Ja silti he muuttivat maailmaa.
-&lt;/p&gt;
-&lt;h3&gt;Tärkeä viesti sinulle&lt;/h3&gt;
-&lt;p&gt;
-Sinun ei tarvitse olla paras kaikessa. Riittää, että löydät &lt;b&gt;oman juttusi&lt;/b&gt; ja uskallat harjoitella sitä.
-&lt;/p&gt;
-&lt;p&gt;
-Jokaisella on omat vahvuutensa – myös sinulla.
-&lt;/p&gt;
+  &lt;div class=&quot;nero-row&quot;&gt;
+    &lt;img src=&quot;https://raw.githubusercontent.com/swan27768/Vahvuusmatka/main/kuvat/Darwin.png&quot;&gt;
+    &lt;div&gt;
+      &lt;b&gt;Charles Darwin&lt;/b&gt;&lt;br&gt;
+      Oli huippuajattelija, mutta esiintyminen oli hänelle vaikeaa.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;nero-row&quot;&gt;
+    &lt;img src=&quot;https://raw.githubusercontent.com/swan27768/Vahvuusmatka/main/kuvat/Newton.png&quot;&gt;
+    &lt;div&gt;
+      &lt;b&gt;Isaac Newton&lt;/b&gt;&lt;br&gt;
+      Keksi painovoimateorian, mutta ihmisten kanssa oleminen oli haastavaa.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;nero-row&quot;&gt;
+    &lt;img src=&quot;https://raw.githubusercontent.com/swan27768/Vahvuusmatka/main/kuvat/Picasso.png&quot;&gt;
+    &lt;div&gt;
+      &lt;b&gt;Pablo Picasso&lt;/b&gt;&lt;br&gt;
+      Maalasi kuuluisia tauluja, mutta laulaminen ei ollut hänen vahvuutensa.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;nero-row oma-nero&quot;&gt;
+    &lt;img src=&quot;https://raw.githubusercontent.com/swan27768/Vahvuusmatka/main/kuvat/hahmo.png&quot;&gt;
+    &lt;div&gt;
+      &lt;b&gt;Seuraava nero?&lt;/b&gt;&lt;br&gt;
+      Sinä voit olla seuraava, kun löydät oman juttusi.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
 &lt;/div&gt;
+
 &lt;div class=&quot;intro-nappi&quot;&gt;
-[[Kirjaa omat vahvuutesi-&gt;Palautepysakki]]
+  [[Löydä omat vahvuutesi-&gt;Palautepysakki]]
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="14" name="Palautepysakki" tags="" position="275,250" size="100,100">&lt;div class=&quot;info-text pehmea-info&quot;&gt;
 
 &lt;h3&gt;Pysähdy hetkeksi&lt;/h3&gt;
 
 &lt;p&gt;
-Olet jo tehnyt monta valintaa.  
+Olet jo tehnyt monta valintaa elämäsi aikana.
 Nyt on hyvä hetki miettiä, mitä olet huomannut itsestäsi.
 &lt;/p&gt;
 
