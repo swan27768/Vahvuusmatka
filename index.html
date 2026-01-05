@@ -176,8 +176,11 @@ body {
 }
 
 #passages .passage{
-  display:block;
+  display:flex;
+  flex-direction:column;
+  align-items:center;   /* TÄMÄ KESKITTÄÄ OTSIKOT */
 }
+
 
 
 #passages{
@@ -205,11 +208,16 @@ body {
 }
 
 #passages .passage h1{
-  color:var(--accent-1);
+  display:inline-block !important;
+  width:auto !important;
+  max-width:100%;
+  padding:.55rem 1.4rem;
   border:2px solid var(--accent-1);
   border-radius:14px;
-  padding:.6rem 1.4rem;
+  white-space:nowrap;
+  margin:0.4rem auto 0.7rem auto;
 }
+
 
 #passages .passage h2{color:var(--accent-2)}
 #passages .passage h3{color:var(--accent-3)}
