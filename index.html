@@ -961,7 +961,9 @@ window.confirmExitStory = function () {
 $(document).on('click', 'a.macro-link.btn--danger', function () {
   SugarCube.Engine.play('Kansi');
 });
-</script><tw-passagedata pid="1" name="StoryInit" tags="" position="700,125" size="100,100">&lt;&lt;set $motive = &quot;&quot;&gt;&gt;
+</script><tw-passagedata pid="1" name="StoryInit" tags="" position="700,125" size="100,100">&lt;&lt;set $answers = []&gt;&gt;
+
+&lt;&lt;set $motive = &quot;&quot;&gt;&gt;
 &lt;&lt;set $role = &quot;&quot;&gt;&gt;
 
 &lt;&lt;set $out = 0&gt;&gt;
@@ -969,12 +971,15 @@ $(document).on('click', 'a.macro-link.btn--danger', function () {
 &lt;&lt;set $move = 0&gt;&gt;
 &lt;&lt;set $stable = 0&gt;&gt;
 
-&lt;&lt;set $kieli = 0&gt;&gt;
+&lt;&lt;set $out = 0&gt;&gt;
+&lt;&lt;set $in = 0&gt;&gt;
+&lt;&lt;set $move = 0&gt;&gt;
+&lt;&lt;set $stable = 0&gt;&gt;
 &lt;&lt;set $sos = 0&gt;&gt;
-&lt;&lt;set $jarj = 0&gt;&gt;
-&lt;&lt;set $luo = 0&gt;&gt;
-&lt;&lt;set $huol = 0&gt;&gt;
 &lt;&lt;set $log = 0&gt;&gt;
+&lt;&lt;set $huol = 0&gt;&gt;
+&lt;&lt;set $kieli = 0&gt;&gt;
+
 
 &lt;&lt;set $skill1 = &quot;&quot;&gt;&gt;
 &lt;&lt;set $skill2 = &quot;&quot;&gt;&gt;
@@ -988,6 +993,8 @@ $(document).on('click', 'a.macro-link.btn--danger', function () {
 &lt;&lt;set $myPaths = []&gt;&gt;
 &lt;&lt;set $eduPaths = []&gt;&gt;
 &lt;&lt;set $recalc = 0&gt;&gt;
+
+
 </tw-passagedata><tw-passagedata pid="2" name="Kansi" tags="" position="475,175" size="100,100">&lt;&lt;script&gt;&gt;
 $(&#39;body&#39;).removeClass(&#39;hide-navbar&#39;);
 &lt;&lt;/script&gt;&gt;
@@ -1012,322 +1019,360 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
   &lt;/div&gt;
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="3" name="Q1" tags="" position="475,300" size="100,100">&lt;&lt;run document.body.classList.remove(&quot;start-lock&quot;)&gt;&gt;
+
 &lt;div class=&quot;q-wrap&quot;&gt;
   &lt;div class=&quot;q-title&quot;&gt;Mikä tuntuu sinusta kaikkein omimmalta?&lt;/div&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.motive=&#39;Auttaa&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Auttaa muita&#39;); SugarCube.State.variables.motive=&#39;Auttaa&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
     Auttaa muita
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.motive=&#39;Yhdistää&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Yhdistää ihmisiä ja luoda hyvää fiilistä&#39;); SugarCube.State.variables.motive=&#39;Yhdistää&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
     Yhdistää ihmisiä ja luoda hyvää fiilistä
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.motive=&#39;Vaikuttaa&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Vaikuttaa ja saada asioita tapahtumaan&#39;); SugarCube.State.variables.motive=&#39;Vaikuttaa&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
     Vaikuttaa ja saada asioita tapahtumaan
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.motive=&#39;Luoda&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Keksiä, luoda ja tehdä omalla tavalla&#39;); SugarCube.State.variables.motive=&#39;Luoda&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
     Keksiä, luoda ja tehdä omalla tavalla
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.motive=&#39;Ymmärtää&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Ymmärtää miten asiat toimivat&#39;); SugarCube.State.variables.motive=&#39;Ymmärtää&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
     Ymmärtää miten asiat toimivat
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.motive=&#39;Turvata&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Rakentaa, korjata ja pitää asiat kunnossa&#39;); SugarCube.State.variables.motive=&#39;Turvata&#39;; SugarCube.Engine.play(&#39;Q2&#39;);&quot;&gt;
     Rakentaa, korjata ja pitää asiat kunnossa
   &lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="4" name="Q2" tags="" position="475,425" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
+</tw-passagedata><tw-passagedata pid="4" name="Q2" tags="" position="600,300" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
   &lt;div class=&quot;q-title&quot;&gt;Mistä saat enemmän energiaa?&lt;/div&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.out++; SugarCube.Engine.play(&#39;Q3&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Saan energiaa ihmisistä ja yhdessä tekemisestä&#39;); SugarCube.State.variables.out++; SugarCube.Engine.play(&#39;Q3&#39;);&quot;&gt;
     Ihmisistä ja yhdessä tekemisestä
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.in++; SugarCube.Engine.play(&#39;Q3&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.answers.push(&#39;Saan energiaa omasta rauhasta ja keskittymisestä&#39;); SugarCube.State.variables.in++; SugarCube.Engine.play(&#39;Q3&#39;);&quot;&gt;
     Omasta rauhasta ja keskittymisestä
   &lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="5" name="Q3" tags="" position="475,550" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
+</tw-passagedata><tw-passagedata pid="5" name="Q3" tags="" position="475,425" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
   &lt;div class=&quot;q-title&quot;&gt;Kumpi kuvaa sinua paremmin?&lt;/div&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.move++; SugarCube.Engine.play(&#39;Q4&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.move++; SugarCube.Engine.play(&#39;Q4&#39;);&quot;&gt;
     Tykkään tehdä ja liikkua
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.stable++; SugarCube.Engine.play(&#39;Q4&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;SugarCube.State.variables.stable++; SugarCube.Engine.play(&#39;Q4&#39;);&quot;&gt;
     Tykkään suunnitella ja tehdä rauhassa
   &lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="6" name="Q4" tags="" position="475,675" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
-  &lt;div class=&quot;q-title&quot;&gt;Mikä tuntuu helpolta?&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="6" name="Q4" tags="" position="600,425" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
+  &lt;div class=&quot;q-title&quot;&gt;Mikä tuntuu sinusta helpolta?&lt;/div&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.sos++; SugarCube.Engine.play(&#39;Q5&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;
+      SugarCube.State.variables.answers.push(&#39;Puhuminen ja ihmisten kohtaaminen&#39;);
+      SugarCube.State.variables.sos++;
+      SugarCube.Engine.play(&#39;Q5&#39;);
+    &quot;&gt;
     Puhuminen ja ihmisten kohtaaminen
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.log++; SugarCube.Engine.play(&#39;Q5&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;
+      SugarCube.State.variables.answers.push(&#39;Ongelmanratkaisu ja ajattelu&#39;);
+      SugarCube.State.variables.log++;
+      SugarCube.Engine.play(&#39;Q5&#39;);
+    &quot;&gt;
     Ongelmanratkaisu ja ajattelu
   &lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="7" name="Result" tags="" position="475,800" size="100,100">&lt;&lt;goto &quot;ResultCalc&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="7" name="Result" tags="" position="550,675" size="100,100">&lt;&lt;goto &quot;ResultCalc&quot;&gt;&gt;
 
 &lt;&lt;goto &quot;ResultView&quot;&gt;&gt;
 
 
-</tw-passagedata><tw-passagedata pid="8" name="Card_Auttaa" tags="" position="250,925" size="100,100">&lt;&lt;run document.body.className = &quot;motive-&quot; + $duuni.replace(/\s/g,&quot;&quot;) &gt;&gt;
+</tw-passagedata><tw-passagedata pid="8" name="Card_Auttaa" tags="" position="300,800" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Auttaa&quot; &gt;&gt;
 
 &lt;div class=&quot;print-card&quot;&gt;
-  &lt;div class=&quot;motive-banner&quot;&gt;
-    &lt;span class=&quot;motive-label&quot;&gt;$duuni&lt;/span&gt;
-  &lt;/div&gt;
 
-&lt;&lt;run document.body.className = &quot;motive-&quot; + $duuni.replace(/\s/g,&quot;&quot;) &gt;&gt;
-
-&lt;div class=&quot;print-card&quot;&gt;
-  &lt;div class=&quot;motive-banner&quot;&gt;
-    &lt;span class=&quot;motive-label&quot;&gt;$duuni&lt;/span&gt;
-  &lt;/div&gt;
+&lt;div class=&quot;motive-banner&quot;&gt;
+  &lt;span class=&quot;motive-label&quot;&gt;Välittäjä&lt;/span&gt;
+&lt;/div&gt;
 
 &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
 
-&lt;p&gt;Olet välittävä, empaattinen ja huomioit helposti toisten tarpeet. Sinulle sopivat alat, joissa saat auttaa, tukea ja olla ihmisten tukena arjessa.&lt;/p&gt;
+&lt;p&gt;
+Sinä olet välittäjä. Huomaat helposti, jos joku tarvitsee apua ja haluat olla tukena.
+Pidät siitä, että voit tehdä jonkun päivästä paremman.
+&lt;/p&gt;
 
-&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+&lt;h3&gt;Sinulle sopivia aloja&lt;/h3&gt;
 
+&lt;ul&gt;
+&lt;li&gt;Hoiva ja sosiaaliala&lt;/li&gt;
+&lt;li&gt;Lasten ja nuorten kanssa työskentely&lt;/li&gt;
+&lt;li&gt;Järjestö- ja tukityö&lt;/li&gt;
+&lt;li&gt;Asiakaspalvelu&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Esimerkkejä ammateista&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Lähihoitaja&lt;/li&gt;
 &lt;li&gt;Lastenohjaaja&lt;/li&gt;
 &lt;li&gt;Nuoriso-ohjaaja&lt;/li&gt;
 &lt;li&gt;Koulunkäynninohjaaja&lt;/li&gt;
-&lt;li&gt;Sosiaalialan perusammatit&lt;/li&gt;
-&lt;li&gt;Sairaala-apulainen&lt;/li&gt;
 &lt;li&gt;Henkilökohtainen avustaja&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt; Näissä töissä saat käyttää empatiaa, kuuntelutaitoa ja halua auttaa muita.&lt;/p&gt;
+&lt;p&gt;
+Näissä töissä saat käyttää empatiaa, kuuntelutaitoa ja halua auttaa muita.
+&lt;/p&gt;
 
 &lt;div class=&quot;no-print action-row&quot;&gt;
-
   &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Profile_Auttaa&#39;)&quot;&gt;
-    Katso oma profiilikortti
-  &lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
-    Takaisin tulokseen
-  &lt;/button&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="Card_Vaikuttaa" tags="" position="375,925" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
-
-&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
-
-&lt;p&gt;Olet rohkea, aloitteellinen ja haluat viedä asioita eteenpäin. Sinulle sopivat alat, joissa saat vaikuttaa, ottaa vastuuta ja saada muut mukaan.&lt;/p&gt;
-
-&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Myyjä&lt;/li&gt;
-&lt;li&gt;Asiakaspalvelija&lt;/li&gt;
-&lt;li&gt;Yrittäjä&lt;/li&gt;
-&lt;li&gt;Tiiminvetäjä&lt;/li&gt;
-&lt;li&gt;Markkinointityöntekijä&lt;/li&gt;
-&lt;li&gt;Tapahtumatuottaja&lt;/li&gt;
-&lt;li&gt;Some-sisällöntuottaja&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt; Näissä töissä saat käyttää rohkeutta, esiintymistaitoja ja kykyä innostaa muita.&lt;/p&gt;
-
-&lt;div class=&quot;no-print action-row&quot;&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;window.print()&quot;&gt;
-    Tulosta tämä kortti
-  &lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Profile_Auttaa&#39;)&quot;&gt;
-    Katso oma profiilikortti
-  &lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
-    Takaisin tulokseen
-  &lt;/button&gt;
-
-&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="10" name="Card_Ymmartaa" tags="" position="500,925" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
-
-&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
-
-&lt;p&gt;Olet harkitseva ja pidät siitä, että asiat ovat selkeitä ja järkeviä. Sinulle sopivat alat, joissa saat tutkia, miettiä ja ratkaista ongelmia.&lt;/p&gt;
-
-&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Laboratorioavustaja&lt;/li&gt;
-&lt;li&gt;Tietotekniikka-asentaja&lt;/li&gt;
-&lt;li&gt;Kirjastotyöntekijä&lt;/li&gt;
-&lt;li&gt;Taloustyöntekijä&lt;/li&gt;
-&lt;li&gt;Tutkimusavustaja&lt;/li&gt;
-&lt;li&gt;Toimistotyöntekijä&lt;/li&gt;
-&lt;li&gt;Laadunvalvoja&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt; Näissä töissä saat käyttää ajattelua, huolellisuutta ja ongelmanratkaisua.&lt;/p&gt;
-
-&lt;div class=&quot;no-print action-row&quot;&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;window.print()&quot;&gt;
-    Tulosta tämä kortti
-  &lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Profile_Auttaa&#39;)&quot;&gt;
-    Katso oma profiilikortti
-  &lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
-    Takaisin tulokseen
-  &lt;/button&gt;
-
+  &lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;Takaisin tulokseen&lt;/button&gt;
 &lt;/div&gt;
 
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="9" name="Card_Vaikuttaa" tags="" position="425,800" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Vaikuttaa&quot; &gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Vaikuttaja&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+  &lt;p&gt;
+  Sinä olet vaikuttaja. Sinä et jää odottamaan, vaan tartut rohkeasti toimeen.
+  Haluat saada asioita liikkeelle, tehdä päätöksiä ja johtaa toimintaa.
+  Olet itsevarma, energinen ja osaat innostaa muita mukaan.
+  &lt;/p&gt;
+
+  &lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Myynti ja asiakastyö&lt;/li&gt;
+    &lt;li&gt;Esihenkilö- ja tiiminvetotyö&lt;/li&gt;
+    &lt;li&gt;Yrittäjyys&lt;/li&gt;
+    &lt;li&gt;Projektien johtaminen&lt;/li&gt;
+    &lt;li&gt;Markkinointi ja kampanjatyö&lt;/li&gt;
+    &lt;li&gt;Politiikka ja järjestötoiminta&lt;/li&gt;
+    &lt;li&gt;Tapahtumatuotanto&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;
+  Näissä töissä saat käyttää rohkeutta, puhetaitoa ja johtamisosaamista.
+  Sinulle sopivat tehtävät, joissa saat vaikuttaa ja ottaa vastuuta.
+  &lt;/p&gt;
+
+  &lt;div class=&quot;no-print action-row&quot;&gt;
+
+    &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+
+    &lt;button class=&quot;action-btn&quot;
+      onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+      Takaisin tulokseen
+    &lt;/button&gt;
+
+  &lt;/div&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="11" name="Card_Luoda" tags="" position="625,925" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="10" name="Card_Ymmärtää" tags="" position="550,800" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Ymmartaa&quot; &gt;&gt;
 
-&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+&lt;div class=&quot;print-card&quot;&gt;
 
-&lt;p&gt;Olet luova ja idearikas. Sinulle sopivat alat, joissa saat keksiä, suunnitella ja tehdä näkyviä ja omannäköisiä juttuja.&lt;/p&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Ajattelija&lt;/span&gt;
+  &lt;/div&gt;
 
-&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+  &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Graafinen avustaja&lt;/li&gt;
-&lt;li&gt;Sisällöntuottaja&lt;/li&gt;
-&lt;li&gt;Media-assistentti&lt;/li&gt;
-&lt;li&gt;Valokuvausavustaja&lt;/li&gt;
-&lt;li&gt;Visualisti&lt;/li&gt;
-&lt;li&gt;Mainonnan avustaja&lt;/li&gt;
-&lt;li&gt;Tapahtumien somistaja&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;p&gt;
+  Sinä olet ajattelija. Haluat ymmärtää, miten asiat toimivat ja miksi.
+  Pidät rauhallisesta työstä, jossa saat miettiä, tutkia ja ratkaista ongelmia.
+  Olet tarkka, looginen ja hyvä huomaamaan kokonaisuuksia.
+  &lt;/p&gt;
 
-&lt;p&gt; Näissä töissä saat käyttää mielikuvitusta, ideointia ja luovuutta.&lt;/p&gt;
+  &lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
 
-&lt;div class=&quot;no-print action-row&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Tieto- ja viestintätekniikka (IT)&lt;/li&gt;
+    &lt;li&gt;Ohjelmistokehitys&lt;/li&gt;
+    &lt;li&gt;Laboratorioala&lt;/li&gt;
+    &lt;li&gt;Tutkimus- ja mittaustyö&lt;/li&gt;
+    &lt;li&gt;Taloustyö ja laskenta&lt;/li&gt;
+    &lt;li&gt;Suunnittelu- ja kehitystehtävät&lt;/li&gt;
+    &lt;li&gt;Tekninen dokumentointi&lt;/li&gt;
+  &lt;/ul&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;window.print()&quot;&gt;
-    Tulosta tämä kortti
-  &lt;/button&gt;
+  &lt;p&gt;
+  Näissä töissä saat käyttää ajattelua, tarkkuutta ja ongelmanratkaisukykyä.
+  Olet tärkeä tekijä, kun rakennetaan toimivia järjestelmiä ja ratkaisuja.
+  &lt;/p&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Profile_Auttaa&#39;)&quot;&gt;
-    Katso oma profiilikortti
-  &lt;/button&gt;
+  &lt;div class=&quot;no-print action-row&quot;&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
-    Takaisin tulokseen
-  &lt;/button&gt;
+    &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
 
-&lt;/div&gt;
+    &lt;button class=&quot;action-btn&quot;
+      onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+      Takaisin tulokseen
+    &lt;/button&gt;
 
-
-&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="12" name="Card_Yhdistaa" tags="" position="750,925" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
-
-&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
-
-&lt;p&gt;Olet sosiaalinen ja viihdyt ihmisten kanssa. Sinulle sopivat alat, joissa saat kohdata ihmisiä ja luoda hyvää ilmapiiriä.&lt;/p&gt;
-
-&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Myymälätyöntekijä&lt;/li&gt;
-&lt;li&gt;Kahvilatyöntekijä&lt;/li&gt;
-&lt;li&gt;Vastaanottovirkailija&lt;/li&gt;
-&lt;li&gt;Asiakaspalvelija&lt;/li&gt;
-&lt;li&gt;Tapahtuma-avustaja&lt;/li&gt;
-&lt;li&gt;Nuorisotyöntekijä&lt;/li&gt;
-&lt;li&gt;Matkailualan työntekijä&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt; Näissä töissä saat käyttää vuorovaikutustaitoja ja hyvää fiilistä.&lt;/p&gt;
-
-&lt;div class=&quot;no-print action-row&quot;&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;window.print()&quot;&gt;
-    Tulosta tämä kortti
-  &lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Profile_Auttaa&#39;)&quot;&gt;
-    Katso oma profiilikortti
-  &lt;/button&gt;
-
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
-    Takaisin tulokseen
-  &lt;/button&gt;
+  &lt;/div&gt;
 
 &lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="11" name="Card_Luoda" tags="" position="675,800" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Luoda&quot; &gt;&gt;
 
+&lt;div class=&quot;print-card&quot;&gt;
+
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Luova keksijä&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+  &lt;p&gt;
+  Sinä olet luova keksijä. Saat helposti ideoita ja innostut uusista asioista.
+  Pidät siitä, että saat tehdä omannäköisiä juttuja ja keksiä uusia tapoja tehdä asioita.
+  &lt;/p&gt;
+
+  &lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Media- ja sisältötyö&lt;/li&gt;
+    &lt;li&gt;Muotoilu ja visuaalinen ala&lt;/li&gt;
+    &lt;li&gt;Peli- ja sovellusalat&lt;/li&gt;
+    &lt;li&gt;Markkinointi ja mainonta&lt;/li&gt;
+    &lt;li&gt;Tapahtumien suunnittelu&lt;/li&gt;
+    &lt;li&gt;Valokuvaus ja video&lt;/li&gt;
+    &lt;li&gt;Some ja viestintä&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;
+  Näissä töissä saat käyttää luovuutta, mielikuvitusta ja omaa tyyliäsi.
+  Saat onnistumisen tunnetta, kun ideasi näkyvät muille.
+  &lt;/p&gt;
+
+  &lt;div class=&quot;no-print action-row&quot;&gt;
+
+    &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+
+    &lt;button class=&quot;action-btn&quot;
+      onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+      Takaisin tulokseen
+    &lt;/button&gt;
+
+  &lt;/div&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="13" name="Card_Turvata" tags="" position="875,925" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="12" name="Card_Yhdistaa" tags="" position="800,800" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Yhdistaa&quot; &gt;&gt;
 
-&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+&lt;div class=&quot;print-card&quot;&gt;
 
-&lt;p&gt;Olet luotettava ja huolellinen. Sinulle sopivat alat, joissa saat pitää huolta turvallisuudesta, järjestyksestä ja siitä, että asiat tehdään oikein.&lt;/p&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Yhdistäjä&lt;/span&gt;
+  &lt;/div&gt;
 
-&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+  &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Varastotyöntekijä&lt;/li&gt;
-&lt;li&gt;Kiinteistönhoitaja&lt;/li&gt;
-&lt;li&gt;Logistiikkatyöntekijä&lt;/li&gt;
-&lt;li&gt;Siivoustyöntekijä&lt;/li&gt;
-&lt;li&gt;Turvallisuusalan avustaja&lt;/li&gt;
-&lt;li&gt;Rakennusapulainen&lt;/li&gt;
-&lt;li&gt;Huoltotyöntekijä&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;p&gt;
+  Sinä olet yhdistäjä. Sinulle on luontaista huomata ihmiset ja ilmapiiri.
+  Saat ihmiset viihtymään, tunnet porukan fiiliksen ja tuot ihmisiä yhteen.
+  Sinulle on tärkeää, että kaikilla on hyvä olla.
+  &lt;/p&gt;
 
-&lt;p&gt; Näissä töissä saat käyttää huolellisuutta ja vastuullisuutta.&lt;/p&gt;
+  &lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
 
-&lt;div class=&quot;no-print action-row&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Asiakaspalvelu&lt;/li&gt;
+    &lt;li&gt;Tapahtumien järjestäminen&lt;/li&gt;
+    &lt;li&gt;HR ja rekrytointi&lt;/li&gt;
+    &lt;li&gt;Nuorisotyö&lt;/li&gt;
+    &lt;li&gt;Ryhmänohjaus&lt;/li&gt;
+    &lt;li&gt;Matkailu- ja palveluala&lt;/li&gt;
+    &lt;li&gt;Järjestötyö&lt;/li&gt;
+  &lt;/ul&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;window.print()&quot;&gt;
-    Tulosta tämä kortti
-  &lt;/button&gt;
+  &lt;p&gt;
+  Näissä töissä saat käyttää sosiaalisuutta, empatiaa ja kykyä luoda hyvää ilmapiiriä.
+  Ihmiset muistavat sinut helposti – sinä olet usein se, joka tuo porukan yhteen.
+  &lt;/p&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Profile_Auttaa&#39;)&quot;&gt;
-    Katso oma profiilikortti
-  &lt;/button&gt;
+  &lt;div class=&quot;no-print action-row&quot;&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
-    Takaisin tulokseen
-  &lt;/button&gt;
+    &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+
+    &lt;button class=&quot;action-btn&quot;
+      onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+      Takaisin tulokseen
+    &lt;/button&gt;
+
+  &lt;/div&gt;
 
 &lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="13" name="Card_Turvata" tags="" position="1000,800" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Turvata&quot; &gt;&gt;
 
+&lt;div class=&quot;print-card&quot;&gt;
+
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Turvaaja&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+  &lt;p&gt;
+  Sinä olet turvaaja. Sinulle on tärkeää, että asiat ovat kunnossa, turvallisia ja
+  toimivat niin kuin pitää. Olet huolellinen, vastuullinen ja luotettava.
+  Muut voivat luottaa sinuun.
+  &lt;/p&gt;
+
+  &lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Logistiikka ja varastotyö&lt;/li&gt;
+    &lt;li&gt;Kiinteistöhuolto&lt;/li&gt;
+    &lt;li&gt;Turvallisuusala ja vartiointi&lt;/li&gt;
+    &lt;li&gt;Prosessiteollisuus&lt;/li&gt;
+    &lt;li&gt;Kunnossapito ja huolto&lt;/li&gt;
+    &lt;li&gt;Rakennusala&lt;/li&gt;
+    &lt;li&gt;Sähkö- ja automaatioala&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;
+  Näissä töissä saat käyttää tarkkuutta, vastuullisuutta ja kykyä huolehtia siitä,
+  että arki toimii turvallisesti ja sujuvasti.
+  &lt;/p&gt;
+
+  &lt;div class=&quot;no-print action-row&quot;&gt;
+
+    &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+
+    &lt;button class=&quot;action-btn&quot;
+      onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+      Takaisin tulokseen
+    &lt;/button&gt;
+
+  &lt;/div&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="14" name="Profile_Auttaa" tags="" position="250,1050" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="14" name="Profile_Auttaa" tags="" position="400,1300" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
 
 &lt;h1&gt;Työprofiili&lt;/h1&gt;
 
@@ -1369,49 +1414,51 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="15" name="Profile_Vaikuttaa" tags="" position="375,1050" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="15" name="Profile_Vaikuttaa" tags="" position="500,1300" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Vaikuttaa&quot; &gt;&gt;
 
-&lt;h1&gt;Työprofiili&lt;/h1&gt;
+&lt;div class=&quot;print-card&quot;&gt;
 
-&lt;p&gt;Haluat viedä asioita eteenpäin ja ottaa vastuuta. Innostut haasteista ja uusista mahdollisuuksista.&lt;/p&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Vaikuttaja&lt;/span&gt;
+  &lt;/div&gt;
 
-&lt;p&gt;&lt;b&gt;Työelämässä olet:&lt;/b&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;rohkea&lt;/li&gt;
-&lt;li&gt;aloitteellinen&lt;/li&gt;
-&lt;li&gt;päättäväinen&lt;/li&gt;
-&lt;li&gt;innostava&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
 
-&lt;p&gt;&lt;b&gt;Saat parhaasi esiin, kun:&lt;/b&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;saat vaikuttaa&lt;/li&gt;
-&lt;li&gt;saat vastuuta&lt;/li&gt;
-&lt;li&gt;työ on vaihtelevaa&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;p&gt;
+  Sinä olet vaikuttaja. Sinulla on halu viedä asioita eteenpäin ja saada muut mukaan.
+  Pidät vastuusta ja uskallat tehdä päätöksiä. Et jää odottamaan, vaan toimit.
+  &lt;/p&gt;
 
-&lt;div class=&quot;no-print action-row&quot;&gt;
+  &lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Card_Auttaa&#39;)&quot;&gt;
-    Takaisin ammattikortteihin
-  &lt;/button&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Myynti ja asiakastyö&lt;/li&gt;
+    &lt;li&gt;Esihenkilö- ja tiiminvetotyö&lt;/li&gt;
+    &lt;li&gt;Yrittäjyys&lt;/li&gt;
+    &lt;li&gt;Markkinointi&lt;/li&gt;
+    &lt;li&gt;Projektityö&lt;/li&gt;
+    &lt;li&gt;Tapahtumien järjestäminen&lt;/li&gt;
+    &lt;li&gt;Yhteiskunnallinen vaikuttaminen&lt;/li&gt;
+  &lt;/ul&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
-    Takaisin tulokseen
-  &lt;/button&gt;
+  &lt;p&gt;
+  Näissä töissä saat käyttää rohkeutta, neuvottelutaitoa ja johtamistaitoja.
+  Saat energiaa siitä, että voit vaikuttaa ja saada asioita tapahtumaan.
+  &lt;/p&gt;
 
-  &lt;button class=&quot;action-btn&quot;
-    onclick=&quot;window.print()&quot;&gt;
-    Tulosta tämä kortti
-  &lt;/button&gt;
+  &lt;div class=&quot;no-print action-row&quot;&gt;
+
+    &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+
+    &lt;button class=&quot;action-btn&quot;
+      onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+      Takaisin tulokseen
+    &lt;/button&gt;
+
+  &lt;/div&gt;
 
 &lt;/div&gt;
-
-
-&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="16" name="Profile_Ymmartaa" tags="" position="500,1050" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="16" name="Profile_Ymmartaa" tags="" position="600,1300" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
 
 &lt;h1&gt;Työprofiili&lt;/h1&gt;
 
@@ -1453,7 +1500,7 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 &lt;/div&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="17" name="Profile_Luoda" tags="" position="625,1050" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="17" name="Profile_Luoda" tags="" position="675,1300" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
 
 &lt;h1&gt;Työprofiili&lt;/h1&gt;
 
@@ -1496,7 +1543,7 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="18" name="Profile_Yhdistaa" tags="" position="750,1050" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="18" name="Profile_Yhdistaa" tags="" position="750,1300" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
 
 &lt;h1&gt;Työprofiili&lt;/h1&gt;
 
@@ -1539,7 +1586,7 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="19" name="Profile_Turvata" tags="" position="875,1050" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
+</tw-passagedata><tw-passagedata pid="19" name="Profile_Turvata" tags="" position="850,1300" size="100,100">&lt;div class=&quot;print-card&quot;&gt;
 
 &lt;h1&gt;Työprofiili&lt;/h1&gt;
 
@@ -1582,7 +1629,7 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="20" name="MyPaths" tags="" position="800,800" size="100,100">&lt;&lt;if !State.variables.myPaths || State.variables.myPaths.length is 0&gt;&gt;
+</tw-passagedata><tw-passagedata pid="20" name="MyPaths" tags="" position="825,650" size="100,100">&lt;&lt;if !State.variables.myPaths || State.variables.myPaths.length is 0&gt;&gt;
   &lt;h2&gt;Minun polkuni&lt;/h2&gt;
   &lt;p&gt;Et ole vielä valinnut suuntaa.&lt;/p&gt;
   [[Takaisin tuloksiin|Result]]
@@ -1659,7 +1706,7 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 &lt;&lt;/if&gt;&gt;
 
 [[Takaisin tulokseen|Result]]
-</tw-passagedata><tw-passagedata pid="21" name="ResultCalc" tags="" position="650,800" size="100,100">/* =========================
+</tw-passagedata><tw-passagedata pid="21" name="ResultCalc" tags="" position="675,675" size="100,100">/* =========================
    DUUNIMINÄ: GENERATIIVINEN
    (Aja ennen ResultView:tä)
 ========================= */
@@ -1747,7 +1794,7 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 /* CORE: Vaikuttaa */
 &lt;&lt;if $duuniCore is &quot;Vaikuttaa&quot;&gt;&gt;
   &lt;&lt;set $coreLead = &quot;Sinä laitat asioita liikkeelle ja uskallat ottaa vastuuta.&quot;&gt;&gt;
-  &lt;&lt;set $coreHow  = &quot;Teet päätöksiä, perustele ja saat muita mukaan.&quot;&gt;&gt;
+  &lt;&lt;set $coreHow  = &quot;Teet päätöksiä, perustelet ja saat muita mukaan.&quot;&gt;&gt;
   &lt;&lt;set $coreSpark = &quot;Innostut, kun saat vaikuttaa lopputulokseen.&quot;&gt;&gt;
   &lt;&lt;set $coreTire  = &quot;Voit väsyä, jos et saa toimia tai sinua ei kuunnella.&quot;&gt;&gt;
   &lt;&lt;set $coreShine = &quot;Loistat työssä, jossa johdetaan, neuvotellaan tai myydään.&quot;&gt;&gt;
@@ -1840,29 +1887,49 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
   &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 &lt;&lt;set $duuniJobs = _uniq.join(&quot;, &quot;)&gt;&gt;
-</tw-passagedata><tw-passagedata pid="22" name="Q5" tags="" position="650,300" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
-  &lt;div class=&quot;q-title&quot;&gt;Mistä pidät enemmän?&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="22" name="Q5" tags="" position="475,550" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
+  &lt;div class=&quot;q-title&quot;&gt;Mistä pidät eniten?&lt;/div&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.luo++; SugarCube.Engine.play(&#39;Q6&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;
+      SugarCube.State.variables.answers.push(&#39;Ideoista ja luovasta tekemisestä&#39;);
+      SugarCube.State.variables.luo++;
+      SugarCube.Engine.play(&#39;Q6&#39;);
+    &quot;&gt;
     Ideoista ja luovasta tekemisestä
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.jarj++; SugarCube.Engine.play(&#39;Q6&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;
+      SugarCube.State.variables.answers.push(&#39;Järjestyksestä ja selkeistä ohjeista&#39;);
+      SugarCube.State.variables.jarj++;
+      SugarCube.Engine.play(&#39;Q6&#39;);
+    &quot;&gt;
     Järjestyksestä ja selkeistä ohjeista
   &lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="23" name="Q6" tags="" position="650,425" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
+</tw-passagedata><tw-passagedata pid="23" name="Q6" tags="" position="600,550" size="100,100">&lt;div class=&quot;q-wrap&quot;&gt;
   &lt;div class=&quot;q-title&quot;&gt;Kumpi tuntuu enemmän sinulta?&lt;/div&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.huol++; SugarCube.Engine.play(&#39;Result&#39;);&quot;&gt;
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;
+      SugarCube.State.variables.answers.push(&#39;Huolehtiminen ja tukeminen&#39;);
+      SugarCube.State.variables.huol++;
+      SugarCube.Engine.play(&#39;Result&#39;);
+    &quot;&gt;
     Huolehtiminen ja tukeminen
   &lt;/button&gt;
 
-  &lt;button class=&quot;q-option&quot; onclick=&quot;SugarCube.State.variables.kieli++; SugarCube.Engine.play(&#39;Result&#39;);&quot;&gt;
-    Puhuminen, kirjoittaminen ja vaikuttaminen sanoilla
+  &lt;button class=&quot;q-option&quot;
+    onclick=&quot;
+      SugarCube.State.variables.answers.push(&#39;Puhuminen ja vaikuttaminen sanoilla&#39;);
+      SugarCube.State.variables.kieli++;
+      SugarCube.Engine.play(&#39;Result&#39;);
+    &quot;&gt;
+    Puhuminen ja vaikuttaminen sanoilla
   &lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="24" name="ResultView" tags="" position="350,800" size="100,100">&lt;&lt;run document.body.className = &quot;motive-&quot; + ($duuniCore || $motive).replace(/ä/g,&quot;a&quot;).replace(/ö/g,&quot;o&quot;) &gt;&gt;
+</tw-passagedata><tw-passagedata pid="24" name="ResultView" tags="" position="425,675" size="100,100">&lt;&lt;run document.body.className = &quot;motive-&quot; + ($duuniCore || $motive).replace(/ä/g,&quot;a&quot;).replace(/ö/g,&quot;o&quot;) &gt;&gt;
 
 &lt;&lt;if !$duuniLabel or $duuniLabel.trim() is &quot;&quot;&gt;&gt;
   &lt;&lt;set $duuniLabel = &quot;DuuniMinä&quot;&gt;&gt;
@@ -1889,11 +1956,355 @@ $(&#39;body&#39;).addClass(&#39;hide-navbar&#39;);
 
 &lt;div class=&quot;no-print action-row&quot;&gt;
   &lt;&lt;link &quot;Katso oma ammattikorttisi&quot;&gt;&gt;
-    &lt;&lt;goto &quot;Card_&quot; + ($duuniCore || $motive)&gt;&gt;
+    &lt;&lt;run
+      var core  = (($duuniCore &amp;&amp; $duuniCore.trim()) ? $duuniCore : $motive);
+      var extra = ($duuniExtra &amp;&amp; $duuniExtra.trim()) ? (&quot;_&quot; + $duuniExtra.trim()) : &quot;&quot;;
+      var target = (&quot;Card_&quot; + core + extra).replace(/\s+/g, &quot;_&quot;);
+
+      if (Story.has(target)) {
+        Engine.play(target);          // esim. Card_Turvata_Tekijä
+      } else {
+        Engine.play((&quot;Card_&quot; + core).replace(/\s+/g, &quot;_&quot;)); // fallback esim. Card_Turvata
+      }
+    &gt;&gt;
   &lt;&lt;/link&gt;&gt;
 &lt;/div&gt;
+&lt;&lt;link &quot;Tulosta koko DuuniMinä-yhteenveto&quot;&gt;&gt;
+  &lt;&lt;goto &quot;PrintSummary&quot;&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+
+
 
 [[Aloita alusta|Kansi]]
+
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="25" name="Card_Turvata_Tekija" tags="" position="1025,900" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Turvata&quot; &gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Rakentaja&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+  &lt;p&gt;
+  Sinä olet rakentaja. Pidät käsillä tekemisestä ja siitä, että näet työsi tulokset
+  heti. Olet käytännöllinen, tarkka ja luotettava. Sinulle sopii työ, jossa rakennetaan,
+  korjataan ja huolletaan oikeita asioita.
+  &lt;/p&gt;
+
+  &lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Rakennusala (kirvesmies, rakennusapulainen)&lt;/li&gt;
+    &lt;li&gt;Sähköala&lt;/li&gt;
+    &lt;li&gt;Putkiasennus ja LVI&lt;/li&gt;
+    &lt;li&gt;Metalli- ja koneala&lt;/li&gt;
+    &lt;li&gt;Ajoneuvoasentaja&lt;/li&gt;
+    &lt;li&gt;Kiinteistöhuolto&lt;/li&gt;
+    &lt;li&gt;Teollisuuden kunnossapito&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;
+  Näissä töissä saat käyttää kädentaitoja, huolellisuutta ja kykyä saada asiat toimimaan.
+  Olet tärkeä tekijä arjen rakenteiden ja turvallisuuden ylläpitämisessä.
+  &lt;/p&gt;
+
+  &lt;div class=&quot;no-print action-row&quot;&gt;
+
+    &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+
+    &lt;button class=&quot;action-btn&quot;
+      onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+      Takaisin tulokseen
+    &lt;/button&gt;
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="26" name="Card_Auttaa _Tekijä" tags="" position="300,900" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Auttaa&quot;&gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Käytännön auttaja&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+&lt;p&gt;
+Olet käytännön auttaja. Autat parhaiten tekemällä konkreettisia asioita.
+Pidät siitä, että voit olla avuksi käsilläsi ja nähdä työsi vaikutuksen heti.
+&lt;/p&gt;
+
+&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lähihoitaja&lt;/li&gt;
+&lt;li&gt;Avustaja&lt;/li&gt;
+&lt;li&gt;Kiinteistöhuolto&lt;/li&gt;
+&lt;li&gt;Hoitotarviketyö&lt;/li&gt;
+&lt;li&gt;Kotiapu&lt;/li&gt;
+&lt;li&gt;Huolto&lt;/li&gt;
+&lt;li&gt;Elintarvikeala&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Näissä töissä saat olla tukena ja apuna ihan konkreettisella tavalla.
+&lt;/p&gt;
+
+&lt;div class=&quot;no-print action-row&quot;&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;Takaisin tulokseen&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="27" name="Card_Vaikuttaa_Innostaja" tags="" position="425,900" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Vaikuttaa&quot;&gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Vaikuttava innostaja&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+&lt;p&gt;
+Olet vaikuttava innostaja. Saat ihmiset mukaan ja viet asioita rohkeasti eteenpäin.
+Uskallat puhua, esiintyä ja innostaa muita toimimaan.
+&lt;/p&gt;
+
+&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Myynti&lt;/li&gt;
+&lt;li&gt;Tapahtumatuotanto&lt;/li&gt;
+&lt;li&gt;Tiiminvetäjä&lt;/li&gt;
+&lt;li&gt;Kampanjatyö&lt;/li&gt;
+&lt;li&gt;Yrittäjyys&lt;/li&gt;
+&lt;li&gt;Valmennus&lt;/li&gt;
+&lt;li&gt;Viestintä&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Näissä töissä saat käyttää rohkeutta, puhetaitoa ja johtamisotetta.
+&lt;/p&gt;
+
+&lt;div class=&quot;no-print action-row&quot;&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;Takaisin tulokseen&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="28" name="Card_Ymmärtää_Suunnittelija" tags="" position="550,900" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Ymmartaa&quot;&gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Ajatteleva suunnittelija&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+&lt;p&gt;
+Olet ajatteleva suunnittelija. Pidät siitä, että saat ymmärtää, analysoida ja rakentaa toimivia kokonaisuuksia.
+Näet syy-seuraussuhteita ja haluat kehittää parempia ratkaisuja.
+&lt;/p&gt;
+
+&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IT-ala&lt;/li&gt;
+&lt;li&gt;Ohjelmistosuunnittelu&lt;/li&gt;
+&lt;li&gt;Analytiikka&lt;/li&gt;
+&lt;li&gt;Taloushallinto&lt;/li&gt;
+&lt;li&gt;Logistiikan suunnittelu&lt;/li&gt;
+&lt;li&gt;Tekninen suunnittelu&lt;/li&gt;
+&lt;li&gt;Tutkimus&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Näissä töissä saat käyttää järkeä, loogisuutta ja järjestelmällisyyttä.
+&lt;/p&gt;
+
+&lt;div class=&quot;no-print action-row&quot;&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;Takaisin tulokseen&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="29" name="Card_Luoda Ilmaisija" tags="" position="675,900" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Luoda&quot;&gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Luova ilmaisija&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+&lt;p&gt;
+Olet luova ilmaisija. Teet ideat näkyviksi ja kerrot tarinoita kuvien, videoiden ja tekstien kautta.
+Sinulle on tärkeää saada näyttää omaa tyyliäsi ja luoda jotain, joka koskettaa muita.
+&lt;/p&gt;
+
+&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sisällöntuottaja&lt;/li&gt;
+&lt;li&gt;Some-tekijä&lt;/li&gt;
+&lt;li&gt;Valokuvaaja&lt;/li&gt;
+&lt;li&gt;Videontekijä&lt;/li&gt;
+&lt;li&gt;Graafinen suunnittelija&lt;/li&gt;
+&lt;li&gt;Media-assistentti&lt;/li&gt;
+&lt;li&gt;Pelikuvittaja&lt;/li&gt;
+&lt;li&gt;Viestintä&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Näissä töissä saat käyttää mielikuvitusta, visuaalista silmää ja omaa ääntäsi.
+&lt;/p&gt;
+
+&lt;div class=&quot;no-print action-row&quot;&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;Takaisin tulokseen&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="30" name="Card_Yhdistää_Innostaja" tags="" position="875,900" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Yhdistaa&quot;&gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Yhteisön innostaja&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+&lt;p&gt;
+Olet yhteisön innostaja. Saat ihmiset mukaan, luot hyvää fiilistä ja pidät porukan koossa.
+Sinulle on tärkeää, että kaikilla on hyvä olla ja että ilmapiiri toimii.
+&lt;/p&gt;
+
+&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nuorisotyö&lt;/li&gt;
+&lt;li&gt;Tapahtumatuotanto&lt;/li&gt;
+&lt;li&gt;Ohjaus ja valmennus&lt;/li&gt;
+&lt;li&gt;Asiakaspalvelu&lt;/li&gt;
+&lt;li&gt;HR ja rekrytointi&lt;/li&gt;
+&lt;li&gt;Järjestötyö&lt;/li&gt;
+&lt;li&gt;Kampanjatyö&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Näissä töissä saat käyttää sosiaalisuutta, rohkeutta ja kykyä sytyttää muita.
+&lt;/p&gt;
+
+&lt;div class=&quot;no-print action-row&quot;&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;Takaisin tulokseen&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="31" name="Card_Luoda Innostaja" tags="" position="750,900" size="100,100">&lt;&lt;run document.body.className = &quot;motive-Luoda&quot;&gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+  &lt;div class=&quot;motive-banner&quot;&gt;
+    &lt;span class=&quot;motive-label&quot;&gt;Luova innostaja&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;h1&gt;AMMATTIKORTTI&lt;/h1&gt;
+
+&lt;p&gt;
+Olet luova innostaja. Keksit ideoita, sytytät muut ja saat projektit liikkeelle.
+Sinulla on luovuutta ja rohkeutta viedä ideat myös käytäntöön.
+&lt;/p&gt;
+
+&lt;h3&gt;Sinulle sopivia aloja ja ammatteja&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projektityö&lt;/li&gt;
+&lt;li&gt;Mainonta&lt;/li&gt;
+&lt;li&gt;Markkinointi&lt;/li&gt;
+&lt;li&gt;Tapahtumat&lt;/li&gt;
+&lt;li&gt;Tiiminvetäjä&lt;/li&gt;
+&lt;li&gt;Yrittäjyys&lt;/li&gt;
+&lt;li&gt;Media&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Näissä töissä saat olla ideanikkari ja liikkeellelaskija.
+&lt;/p&gt;
+
+&lt;div class=&quot;no-print action-row&quot;&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä kortti&lt;/button&gt;
+&lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;Takaisin tulokseen&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="32" name="Card_Auttaa_Innostaja" tags="" position="225,900" size="100,100">&lt;&lt;run document.body.className=&quot;motive-Auttaa&quot;&gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+&lt;div class=&quot;motive-banner&quot;&gt;&lt;span class=&quot;motive-label&quot;&gt;KANNUSTAJA&lt;/span&gt;&lt;/div&gt;
+
+&lt;p&gt;Saat ihmiset uskomaan itseensä ja jaksamaan.&lt;/p&gt;
+
+&lt;h3&gt;Sopivia töitä&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Nuoriso-ohjaaja&lt;/li&gt;
+&lt;li&gt;Valmentaja&lt;/li&gt;
+&lt;li&gt;Vertaisohjaaja&lt;/li&gt;
+&lt;li&gt;Tapahtumaohjaaja&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sinä tuot porukkaan hyvän fiiliksen.&lt;/p&gt;
+
+&lt;button onclick=&quot;window.print()&quot;&gt;Tulosta kortti&lt;/button&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="33" name="PrintSummary" tags="" position="525,1025" size="100,100">&lt;&lt;run document.body.className = &quot;motive-&quot; + ($duuniCore || $motive).replace(/ä/g,&quot;a&quot;).replace(/ö/g,&quot;o&quot;) &gt;&gt;
+
+&lt;div class=&quot;print-card&quot;&gt;
+
+&lt;div class=&quot;motive-banner&quot;&gt;
+  &lt;span class=&quot;motive-label&quot;&gt;
+    OMA DUUNIMINÄ-YHTEENVETO
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Olet &lt;b&gt;$duuniLabel&lt;/b&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;b&gt;$duuniText&lt;/b&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;Miten toimit työelämässä&lt;/h2&gt;
+
+&lt;p&gt;&lt;b&gt;Toimintatapa:&lt;/b&gt; $duuniHow&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Innostut, kun:&lt;/b&gt; $duuniSpark&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Voit väsyä, jos:&lt;/b&gt; $duuniTire&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Loistat työssä, jossa:&lt;/b&gt; $duuniShine&lt;/p&gt;
+
+&lt;&lt;if $duuniJobs and $duuniJobs.trim() is not &quot;&quot;&gt;&gt;
+&lt;p&gt;&lt;b&gt;Esimerkkejä työaloista:&lt;/b&gt; $duuniJobs&lt;/p&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;Vastauksesi kyselyssä&lt;/h2&gt;
+
+&lt;ul class=&quot;answer-list&quot;&gt;
+&lt;&lt;for _a range $answers&gt;&gt;
+  &lt;li&gt;_a&lt;/li&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;Mitä tämä kertoo sinusta?&lt;/h2&gt;
+&lt;p&gt;
+Tämä profiili on tehty sinun vastaustesi perusteella. Se ei rajoita sinua – vaan näyttää, missä sinulla on luonnollisia vahvuuksia ja millaisissa töissä voit todennäköisesti viihtyä ja onnistua parhaiten.
+&lt;/p&gt;
+
+&lt;div class=&quot;no-print action-row&quot;&gt;
+
+  &lt;button class=&quot;action-btn&quot; onclick=&quot;window.print()&quot;&gt;Tulosta tämä yhteenveto&lt;/button&gt;
+
+  &lt;button class=&quot;action-btn&quot; onclick=&quot;SugarCube.Engine.play(&#39;Result&#39;)&quot;&gt;
+    Takaisin tulokseen
+  &lt;/button&gt;
+
+&lt;/div&gt;
 
 &lt;/div&gt;
 </tw-passagedata></tw-storydata>
